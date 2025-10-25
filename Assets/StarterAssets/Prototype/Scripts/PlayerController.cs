@@ -1,5 +1,6 @@
- using UnityEngine;
- using System.Collections;
+using UnityEngine;
+using System.Collections;
+using Unity.Cinemachine;
 
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -27,6 +28,14 @@ namespace StarterAssets
 
         public float checkAnimation;
 
+        //camera
+        public float zoomSpeed = 2f;
+        public float minFOV = 30f;
+        public float maxFOV = 70f;
+
+        public CinemachinePositionComposer cinemachineVirtualCamera;
+
+
         private bool IsCurrentDeviceMouse
         {
             get
@@ -44,6 +53,7 @@ namespace StarterAssets
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
             _combat = GetComponent<CombatHandler>();
+            cinemachineVirtualCamera = GetComponent<CinemachinePositionComposer>();
 #if ENABLE_INPUT_SYSTEM
             _playerInput = GetComponent<PlayerInput>();
 #else
@@ -69,6 +79,7 @@ namespace StarterAssets
             if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
                 Move();
+                HandleZoom();
             }
             AttackMove();
             GroundedCheck();
@@ -79,7 +90,6 @@ namespace StarterAssets
             }else if (_input.move.x > 0){
                 _sprite.flipX = true;
             }
-
         }
 
         public void AttackMove()
@@ -91,6 +101,18 @@ namespace StarterAssets
                 _combat.ChangeAnimation("BaseAttack");
             }
 
+        }
+        private void HandleZoom()
+        {
+            float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+
+            if (Mathf.Abs(scrollInput) > 0.01f)
+            {
+                float currentFOV = cinemachineVirtualCamera.CameraDistance;
+                currentFOV -= scrollInput * zoomSpeed * 10f; // multiply for sensitivity
+                currentFOV = Mathf.Clamp(currentFOV, minFOV, maxFOV);
+                cinemachineVirtualCamera.CameraDistance = currentFOV;
+            }
         }
         private void RotateRelative(float smoothRotate)
         {
