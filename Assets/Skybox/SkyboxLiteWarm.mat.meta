@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d5f4b49e5c444284ba388b2595a3d480
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 196526
+  packageName: Starter Assets - ThirdPerson | Updates in new CharacterController
+    package
+  packageVersion: 1.1.5
+  assetPath: Assets/StarterAssets/Environment/Art/Skybox/SkyboxLiteWarm.mat
+  uploadId: 691128

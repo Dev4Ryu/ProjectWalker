@@ -4,7 +4,7 @@ using TMPro;
 
 namespace StarterAssets
 { 
-    public class PlayerUI : MonoBehaviour
+    public class CharacterUI : MonoBehaviour
     {
         private CombatHandler _combat;
         public Slider _slider;
@@ -17,12 +17,13 @@ namespace StarterAssets
         }
         public void Update()
         {
-            SetMaxHealth(_combat._maxHealth);
-            SetHealth(_combat._health);
-            if (_healthText != null)
-                {
-                    _healthText.text = _combat._health + "/" + _combat._maxHealth;
-                }
+            // SetMaxHealth(_combat._maxHealth);
+            // SetHealth(_combat._health);
+            // if (_healthText != null)
+            // {
+            //     _healthText.text = _combat._health + "/" + _combat._maxHealth;
+            // }
+            MainMenu();
             
         }
         public void SetMaxHealth(int health)
@@ -36,8 +37,11 @@ namespace StarterAssets
         }
        public void MainMenu()
         {
-            _pauseMenu.SetActive(!_pauseMenu.activeSelf);
-            Time.timeScale = _pauseMenu.activeSelf ? 0f : 1f;
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                _pauseMenu.SetActive(!_pauseMenu.activeSelf);
+                Time.timeScale = _pauseMenu.activeSelf ? 2f : 1f;
+            }
         }
     }
 }

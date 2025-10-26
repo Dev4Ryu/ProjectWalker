@@ -24,8 +24,6 @@ namespace StarterAssets
         public SpriteRenderer _sprite;
         // player
 
-        public bool _canAttack = true;
-
         public float checkAnimation;
 
         //camera
@@ -53,7 +51,6 @@ namespace StarterAssets
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
             _combat = GetComponent<CombatHandler>();
-            cinemachineVirtualCamera = GetComponent<CinemachinePositionComposer>();
 #if ENABLE_INPUT_SYSTEM
             _playerInput = GetComponent<PlayerInput>();
 #else
@@ -70,6 +67,10 @@ namespace StarterAssets
             if (_mainCamera == null)
             {
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+            }
+            if (cinemachineVirtualCamera == null)
+            {
+                cinemachineVirtualCamera = GameObject.FindGameObjectWithTag("CinemachineTarget").GetComponent<CinemachinePositionComposer>();
             }
         }
 
@@ -94,11 +95,10 @@ namespace StarterAssets
 
         public void AttackMove()
         {
-            if (_input.attack && _canAttack)
+            if (_input.attack)
             {
                 _input.attack = false;
                 Aimming();
-                _combat.ChangeAnimation("BaseAttack");
             }
 
         }
@@ -174,16 +174,27 @@ namespace StarterAssets
 
             Vector3 mousePos = Input.mousePosition;
             Ray mouseRay = Camera.main.ScreenPointToRay(mousePos);
+
+            RaycastHit hit;
             Plane groundPlane = new Plane(Vector3.up, transform.position);
 
-            if (groundPlane.Raycast(mouseRay, out rayDistance))
+            
+            if (Physics.Raycast(mouseRay, out hit))
             {
-                Vector3 lookAtPoint = mouseRay.GetPoint(rayDistance);
+                AIController CharBox = hit.collider.GetComponent<AIController>();
+                if (CharBox != null){
+                    print("true");
+                    if (groundPlane.Raycast(mouseRay, out rayDistance))
+                    {
+                        Vector3 lookAtPoint = mouseRay.GetPoint(rayDistance);
 
-                if (Vector3.Distance(transform.position, lookAtPoint) <= 10)
-                {
-                    Quaternion rotation = Quaternion.LookRotation(lookAtPoint - transform.position);
-                    transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 2);
+                        if (Vector3.Distance(transform.position, lookAtPoint) <= 10)
+                        {
+                            Quaternion rotation = Quaternion.LookRotation(lookAtPoint - transform.position);
+                            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 2);
+                        }
+                    }
+                    _combat.ChangeAnimation("BaseAttack");
                 }
             }
         }
