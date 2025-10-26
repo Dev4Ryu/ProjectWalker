@@ -285,9 +285,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2262790967930873805}
-  enemies:
-  - {fileID: 8127168142189770821}
-  turnDelay: 1
+  charQueue: []
+  combatTurnBase: {fileID: 0}
+  originDistance: {x: 0, y: 0, z: 0}
+  distance: 0
+  _turnBaseMode: 0
+  queue: 0
 --- !u!4 &167013916
 Transform:
   m_ObjectHideFlags: 0
@@ -2369,6 +2372,10 @@ MonoBehaviour:
   _sprite: {fileID: 1333283375}
   _canAttack: 1
   checkAnimation: 0
+  zoomSpeed: 2
+  minFOV: 30
+  maxFOV: 70
+  cinemachineVirtualCamera: {fileID: 0}
 --- !u!33 &2797017065906363677
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2482,20 +2489,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3708677638079466546}
   m_CullTransparentMesh: 1
---- !u!114 &4393432578185298993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4405802465801931709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01ed9dd9aca8c924e86d5a2bd7cbe14d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _slider: {fileID: 6471877151907446527}
-  _healthText: {fileID: 0}
 --- !u!1 &4405802465801931709
 GameObject:
   m_ObjectHideFlags: 0
@@ -2511,7 +2504,6 @@ GameObject:
   - component: {fileID: 8127168142189770821}
   - component: {fileID: 7663765129806386605}
   - component: {fileID: 6453459394381541277}
-  - component: {fileID: 4393432578185298993}
   - component: {fileID: 4427877968277793248}
   m_Layer: 6
   m_Name: Enemy (2)
@@ -2610,17 +2602,23 @@ MonoBehaviour:
   - moveName: 
     distance: 0
     moveDescription: 
+    actionCost: 0
   - moveName: 
     distance: 0
     moveDescription: 
+    actionCost: 0
   - moveName: 
     distance: 0
     moveDescription: 
+    actionCost: 0
   - moveName: 
     distance: 0
     moveDescription: 
+    actionCost: 0
   _maxHealth: 445
   _health: 0
+  _maxAction: 0
+  _action: 0
   _baseDamage: 0
   _speedMove: 5
   _canBeDestroy: 1
@@ -2689,8 +2687,11 @@ MonoBehaviour:
   - moveName: BaseAttack
     distance: 0
     moveDescription: 
+    actionCost: 0
   _maxHealth: 50
   _health: 0
+  _maxAction: 0
+  _action: 0
   _baseDamage: 0
   _speedMove: 5
   _canBeDestroy: 1
@@ -2944,20 +2945,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &7488887054000924812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7607824020089896381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01ed9dd9aca8c924e86d5a2bd7cbe14d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _slider: {fileID: 862741331}
-  _healthText: {fileID: 426174841}
 --- !u!95 &7586140736493355489
 Animator:
   serializedVersion: 7
@@ -2993,7 +2980,6 @@ GameObject:
   - component: {fileID: 844391701057205848}
   - component: {fileID: 5346208161206285116}
   - component: {fileID: 2262790967930873805}
-  - component: {fileID: 7488887054000924812}
   - component: {fileID: 8616616819610891422}
   - component: {fileID: 6852480247361368055}
   m_Layer: 6

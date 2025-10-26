@@ -12,6 +12,7 @@ namespace StarterAssets
         public Vector3 hitboxSpace;
         public bool permenant;
         public int damage;
+        
         public int knockBack;
         public bool stunt;
     }
@@ -21,6 +22,7 @@ namespace StarterAssets
         public string moveName;
         public float distance;
         public string moveDescription;
+        public int actionCost;
     }
     public class CombatHandler : MonoBehaviour
     {
@@ -34,11 +36,16 @@ namespace StarterAssets
         
         public int _maxHealth;
         public int _health;
+
+        public int _maxAction;
+        public int _action;
+
         public int _baseDamage;
         public int _speedMove;
         
         public bool _canBeDestroy = true;
         public bool _resetIfDie = false;
+
         private void Start()
         {
             _health = _maxHealth;
@@ -47,8 +54,6 @@ namespace StarterAssets
         }
         private void Update()
         {
-            if (TurnManager.Instance != null && !TurnManager.Instance.enabled) return;
-
             Impluse();
             if (_health <= 0 && _resetIfDie)
             {
@@ -73,8 +78,6 @@ namespace StarterAssets
             hitboxCom._damage = HitboxList[hitboxNum].damage;
             hitboxCom._stunt = HitboxList[hitboxNum].stunt;
             hitboxCom._knockBack = HitboxList[hitboxNum].knockBack;
-
-            TurnManager.Instance.EndTurn();
         }
         public void ApplyImpluse(float _applyImpluse)
         {

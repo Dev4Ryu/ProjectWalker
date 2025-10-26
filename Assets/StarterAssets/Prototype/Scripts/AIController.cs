@@ -4,7 +4,7 @@
 
 namespace StarterAssets
 {
-    public class EnemyController : ControllerHandler
+    public class AIController : ControllerHandler
     {
         [Header("AI")]
         [Tooltip("Target destination for Nav Mesh Agent as Transform")]
