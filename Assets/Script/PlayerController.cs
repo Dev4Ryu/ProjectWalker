@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using Unity.Cinemachine;
-using System.Runtime.InteropServices;
 
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -22,7 +21,6 @@ namespace StarterAssets
         private PlayerInput _playerInput;
 #endif
         private GameObject _mainCamera;
-        public SpriteRenderer _sprite;
         // player
 
         public float checkAnimation;
@@ -85,25 +83,15 @@ namespace StarterAssets
             if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
                 Move();
-                AttackMove();
             }
             CameraZooming();
             GroundedCheck();
             Gravity();
 
             if (_input.move.x < 0){
-                _sprite.flipX = true;
+                transform.localScale = new Vector3(-1,transform.localScale.y,transform.localScale.z);
             }else if (_input.move.x > 0){
-                _sprite.flipX = false;
-            }
-        }
-
-        public void AttackMove()
-        {
-            if (_input.attack)
-            {
-                _input.attack = false;
-                Aimming();
+                transform.localScale = new Vector3(1,transform.localScale.y,transform.localScale.z);
             }
         }
         private void CameraZooming()
@@ -169,8 +157,14 @@ namespace StarterAssets
                 _animator.SetFloat(_animIDSpeed, _animationBlend);
                 _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                print("ok");
+                Attack(0);
+            }
+            
         }
-        private void Aimming()
+        public void Aimming()
         {
             Vector3 mousePos = Input.mousePosition;
             Ray mouseRay = Camera.main.ScreenPointToRay(mousePos);
@@ -178,21 +172,28 @@ namespace StarterAssets
             RaycastHit hit;
             Plane groundPlane = new Plane(Vector3.up, transform.position);
 
-            
-            if (Physics.Raycast(mouseRay, out hit))
-            {
-                AIController charSelect = hit.collider.GetComponent<AIController>();
 
-                if (charSelect != null)
+            if (Physics.Raycast(mouseRay, out hit) && _input.attack)
+            {
+                TurnBaseManager.turnBaseData.charSelect = hit.collider.GetComponent<AIController>();
+            }
+        }
+        public void Attack(int _move)
+        {
+            AIController charSelect = TurnBaseManager.turnBaseData.charSelect;
+            if (charSelect != null)
+            {
+                print(_combat.AbilityMove[_move].moveName);
+                if (Vector3.Distance(transform.position, charSelect.transform.position) <= 10)
                 {
-                    print("work");
-                    if (Vector3.Distance(transform.position, charSelect.transform.position) <= 10)
-                    {
-                        Quaternion rotation = Quaternion.LookRotation(charSelect.transform.position - transform.position);
-                        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 2);
-                        _combat.ChangeAnimation(_combat.AbilityMove[0].moveName);
-                    }
+                    Quaternion rotation = Quaternion.LookRotation(charSelect.transform.position - transform.position);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 2);
+                    _combat.ChangeAnimation(_combat.AbilityMove[_move].moveName);
                 }
+            }
+            else
+            {
+                _combat.ChangeAnimation(_combat.AbilityMove[_move].moveName);
             }
         }
     }

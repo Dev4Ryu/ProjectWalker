@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "StarterAssets",
     "maps": [
         {
@@ -18,7 +19,7 @@
                     "name": "Attack",
                     "type": "Value",
                     "id": "ac439717-1733-4418-a1ae-9609be97dcb9",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -27,7 +28,7 @@
                     "name": "Dash",
                     "type": "Value",
                     "id": "9908d02b-7a00-4fcc-8f50-a9749de69fef",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true

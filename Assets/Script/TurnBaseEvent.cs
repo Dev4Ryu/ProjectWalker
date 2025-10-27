@@ -16,6 +16,7 @@ namespace StarterAssets
 
         public bool _turnBaseMode = false;
         public int queue;
+        public AIController charSelect;
 
         void Awake()
         {

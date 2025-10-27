@@ -81,7 +81,7 @@ namespace StarterAssets
             hitboxCom._stunt = HitboxList[hitboxNum].stunt;
             hitboxCom._knockBack = HitboxList[hitboxNum].knockBack;
 
-            TurnBaseManager.turnBaseData.queue++;
+            // TurnBaseManager.turnBaseData.queue++;
         }
         public void ApplyImpluse(float _applyImpluse)
         {
