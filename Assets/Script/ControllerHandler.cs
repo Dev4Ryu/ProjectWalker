@@ -38,7 +38,7 @@ namespace StarterAssets
 
         protected float _speed;
         protected float _animationBlend;
-        protected float _targetRotation = 0.0f;
+        public float _targetRotation = 0.0f;
         protected float _rotationVelocity;
         protected float _verticalVelocity;
 

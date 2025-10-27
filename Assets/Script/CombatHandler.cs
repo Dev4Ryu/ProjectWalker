@@ -45,7 +45,6 @@ namespace StarterAssets
         
         public bool _canBeDestroy = true;
         public bool _resetIfDie = false;
-        public Renderer rend;
 
         private void Start()
         {
@@ -68,6 +67,18 @@ namespace StarterAssets
         }
         private void LateUpdate(){
             _currentClipName = _controllerHandler._animator.GetCurrentAnimatorStateInfo(0).shortNameHash;
+
+            if (_controllerHandler._targetRotation < 0)
+            {
+                foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
+                    sr.flipX = true;
+            }
+            else if (_controllerHandler._targetRotation > 0)
+            {
+                foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
+                    sr.flipX = false;
+            }
+
         }
         private void ApplyHitbox(int hitboxNum)
         {
@@ -104,10 +115,13 @@ namespace StarterAssets
             _controllerHandler._animator.CrossFadeInFixedTime(animation, 0);
         }
         private void OnMouseEnter() {
-            rend.material.EnableKeyword("_EMISSION");
+            foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
+                    sr.material.EnableKeyword("_EMISSION");
+            
         }
         private void OnMouseExit() {
-            rend.material.DisableKeyword("_EMISSION");
+            foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
+                    sr.material.DisableKeyword("_EMISSION");
         }
     }
 }

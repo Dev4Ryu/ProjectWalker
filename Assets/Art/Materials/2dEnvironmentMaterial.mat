@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CharacterMaterial 1
+  m_Name: 2dEnvironmentMaterial
   m_Shader: {fileID: 4800000, guid: 010cbaa7bc9c98949a1f3fd543b8ff43, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0

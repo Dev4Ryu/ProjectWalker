@@ -89,11 +89,6 @@ namespace StarterAssets
             CameraZooming();
             GroundedCheck();
             Gravity();
-            if (transform.rotation.x < 0){
-                transform.localScale = new Vector3(-1,transform.localScale.y,transform.localScale.z);
-            }else if (transform.rotation.x > 0){
-                transform.localScale = new Vector3(1,transform.localScale.y,transform.localScale.z);
-            }
         }
         private void CameraZooming()
         {
@@ -166,9 +161,8 @@ namespace StarterAssets
         }
         public void Aimming()
         {
-            if(!EventSystem.current.IsPointerOverGameObject())
+            if (!EventSystem.current.IsPointerOverGameObject())
             {
-                
                 Vector3 mousePos = Input.mousePosition;
                 Ray mouseRay = Camera.main.ScreenPointToRay(mousePos);
 

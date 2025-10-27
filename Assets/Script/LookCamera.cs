@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[ExecuteInEditMode]  // 👈 Makes this script run in Edit Mode too
+[ExecuteInEditMode]
 public class LookAtCamera : MonoBehaviour
 {
     private Camera mainCamera;
@@ -14,15 +14,14 @@ public class LookAtCamera : MonoBehaviour
     {
         if (mainCamera == null)
         {
-            // Try to find camera again if it was null (useful in editor)
             mainCamera = Camera.main;
             if (mainCamera == null) return;
         }
 
-        // Make the sprite face the camera direction
-        transform.forward = mainCamera.transform.forward;
-        // OR use this line for classic billboard behavior (facing camera position)
-        // transform.LookAt(transform.position + mainCamera.transform.rotation * Vector3.forward,
-        //                  mainCamera.transform.rotation * Vector3.up);
+        // Copy camera rotation without affecting parent transforms
+        transform.rotation = Quaternion.LookRotation(
+            mainCamera.transform.forward,
+            mainCamera.transform.up
+        );
     }
 }
