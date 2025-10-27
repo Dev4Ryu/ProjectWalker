@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using Unity.Cinemachine;
+using UnityEngine.EventSystems;
 
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -84,13 +85,13 @@ namespace StarterAssets
             {
                 Move();
             }
+            Aimming();
             CameraZooming();
             GroundedCheck();
             Gravity();
-
-            if (_input.move.x < 0){
+            if (transform.rotation.x < 0){
                 transform.localScale = new Vector3(-1,transform.localScale.y,transform.localScale.z);
-            }else if (_input.move.x > 0){
+            }else if (transform.rotation.x > 0){
                 transform.localScale = new Vector3(1,transform.localScale.y,transform.localScale.z);
             }
         }
@@ -162,20 +163,23 @@ namespace StarterAssets
                 print("ok");
                 Attack(0);
             }
-            
         }
         public void Aimming()
         {
-            Vector3 mousePos = Input.mousePosition;
-            Ray mouseRay = Camera.main.ScreenPointToRay(mousePos);
-
-            RaycastHit hit;
-            Plane groundPlane = new Plane(Vector3.up, transform.position);
-
-
-            if (Physics.Raycast(mouseRay, out hit) && _input.attack)
+            if(!EventSystem.current.IsPointerOverGameObject())
             {
-                TurnBaseManager.turnBaseData.charSelect = hit.collider.GetComponent<AIController>();
+                
+                Vector3 mousePos = Input.mousePosition;
+                Ray mouseRay = Camera.main.ScreenPointToRay(mousePos);
+
+                RaycastHit hit;
+                Plane groundPlane = new Plane(Vector3.up, transform.position);
+
+
+                if (Physics.Raycast(mouseRay, out hit) && _input.attack)
+                {
+                    TurnBaseManager.turnBaseData.charSelect = hit.collider.GetComponent<AIController>();
+                }
             }
         }
         public void Attack(int _move)
@@ -190,10 +194,6 @@ namespace StarterAssets
                     transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 2);
                     _combat.ChangeAnimation(_combat.AbilityMove[_move].moveName);
                 }
-            }
-            else
-            {
-                _combat.ChangeAnimation(_combat.AbilityMove[_move].moveName);
             }
         }
     }

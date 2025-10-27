@@ -45,7 +45,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DirtTex:
-        m_Texture: {fileID: 2800000, guid: c26493f503f1e514481067a61606fe99, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9787bc5a36f88ad4abaf95e619caeb2a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -53,7 +53,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GrassTex:
-        m_Texture: {fileID: 2800000, guid: 9787bc5a36f88ad4abaf95e619caeb2a, type: 3}
+        m_Texture: {fileID: 2800000, guid: cbd900ff824a5ac4cbaf23686d3370c5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -65,7 +65,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
-        m_Texture: {fileID: 2800000, guid: 680704dce4b8aca4a8b7e24240ba2fe8, type: 3}
+        m_Texture: {fileID: 2800000, guid: f0f25e2c70f27264fb8eca9f5928ec6b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -97,9 +97,9 @@ Material:
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _AmbientAmount: 0.631
+    - _AmbientAmount: 0.721
     - _Blend: 0
-    - _BlendAmount: 0.386
+    - _BlendAmount: 0.888
     - _BlendModePreserveSpecular: 1
     - _BlendOp: 0
     - _BumpScale: 1

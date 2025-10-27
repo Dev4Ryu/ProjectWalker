@@ -37,7 +37,7 @@
                     "name": "Skill_0",
                     "type": "Value",
                     "id": "fd7b1ae5-77de-4460-ba2e-acf4fedc4fb0",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -46,7 +46,7 @@
                     "name": "Skill_1",
                     "type": "Value",
                     "id": "ac4fd7b9-6c96-4a54-8b64-a20eaf2f71db",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -55,7 +55,7 @@
                     "name": "Skill_2",
                     "type": "Button",
                     "id": "41469b7d-2f18-4691-823b-158ad6886811",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false

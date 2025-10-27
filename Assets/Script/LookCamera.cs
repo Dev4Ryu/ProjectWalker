@@ -21,7 +21,6 @@ public class LookAtCamera : MonoBehaviour
 
         // Make the sprite face the camera direction
         transform.forward = mainCamera.transform.forward;
-
         // OR use this line for classic billboard behavior (facing camera position)
         // transform.LookAt(transform.position + mainCamera.transform.rotation * Vector3.forward,
         //                  mainCamera.transform.rotation * Vector3.up);

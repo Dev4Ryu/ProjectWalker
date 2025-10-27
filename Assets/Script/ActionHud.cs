@@ -1,41 +1,47 @@
 using UnityEngine;
 using UnityEngine.UI;
-
-public class ActionHud : MonoBehaviour
+namespace StarterAssets
 {
-    public GameObject someGameObject;
-    public Image uiIcon;
-
-    public float baseScale = 1f;     // Normal size when close
-    public float scaleDistance = 5f; // Distance where scale starts to shrink
-    public float minScale = 0.3f;    // Minimum scale when far
-
-    void Update()
+    
+    public class ActionHud : MonoBehaviour
     {
-        if (someGameObject == null || uiIcon == null)
-            return;
+        public GameObject targetAction;
+        public Image characterAction;
 
-        // Get world and screen position
-        Vector3 worldPos = someGameObject.transform.position;
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
+        public float baseScale = 1f;     // Normal size when close
+        public float scaleDistance = 5f; // Distance where scale starts to shrink
+        public float minScale = 0.3f;    // Minimum scale when far
 
-        // If object is behind the camera, hide icon
-        // if (screenPos.z < 0)
-        // {
-        //     uiIcon.enabled = false;
-        //     return;
-        // }
+        void Update()
+        {
+            if (targetAction == null || characterAction == null)
+                return;
+            // Get world and screen position
+            Vector3 worldPos = targetAction.transform.position;
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
 
-        uiIcon.enabled = true;
-        uiIcon.transform.position = new Vector3(screenPos.x, screenPos.y, 0);
+            characterAction.transform.position = new Vector3(screenPos.x, screenPos.y, 0);
 
-        // Calculate distance
-        float distance = Vector3.Distance(Camera.main.transform.position, someGameObject.transform.position);
+            // Calculate distance
+            float distance = Vector3.Distance(Camera.main.transform.position, targetAction.transform.position);
 
-        // Scale inversely by distance (closer = bigger)
-        float scale = baseScale / (distance / scaleDistance);
-        scale = Mathf.Clamp(scale, minScale, baseScale);
+            // Scale inversely by distance (closer = bigger)
+            float scale = baseScale / (distance / scaleDistance);
+            scale = Mathf.Clamp(scale, minScale, baseScale);
 
-        uiIcon.rectTransform.localScale = Vector3.one * scale;
+            characterAction.rectTransform.localScale = Vector3.one * scale;
+        }
+        void LateUpdate()
+        {
+            if (TurnBaseManager.turnBaseData.charSelect != null)
+            {
+                characterAction.gameObject.SetActive(true);
+                targetAction = TurnBaseManager.turnBaseData.charSelect.gameObject;
+            }
+            else if(TurnBaseManager.turnBaseData.charSelect == null)
+            {
+                characterAction.gameObject.SetActive(false);
+            }
+        }
     }
 }

@@ -46,7 +46,7 @@ TagManager:
   - name: BackGround
     uniqueID: 343601949
     locked: 0
-  - name: Character
+  - name: Overworld
     uniqueID: 1783922117
     locked: 0
   m_RenderingLayers:
