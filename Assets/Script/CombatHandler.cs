@@ -47,6 +47,8 @@ namespace StarterAssets
         public bool _canBeDestroy = true;
         public bool _resetIfDie = false;
 
+        public bool _flip = true;
+
         private void Start()
         {
             _health = _maxHealth;
@@ -62,46 +64,73 @@ namespace StarterAssets
             }
             else if (_health <= 0 && _canBeDestroy)
             {
-                Destroy(gameObject);
-                TurnBaseManager.turnBaseData.charQueue.Remove(_controllerHandler);
+                ChangeAnimation("dead");
+                if (TurnBaseManager.turnBaseData.charQueue[TurnBaseManager.turnBaseData.queue] != GetComponent<AIController>())
+                {
+                    TurnBaseManager.turnBaseData.charQueue.Remove(_controllerHandler);
+                }
+                else
+                {
+                    _controllerHandler.enabled = false; 
+                }
+                
             }
             Vector3 facingDir = transform.forward;
 
-            SpriteSkin spriteSkin = GetComponentInChildren<SpriteSkin>();
-
-            if (spriteSkin != null)
+            foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
             {
-                Transform rootBone = spriteSkin.rootBone;
-                if (rootBone != null)
+                SpriteSkin sk = sr.GetComponent<SpriteSkin>();
+                if (sk != null)
                 {
-                    Vector3 localScale = rootBone.localScale;
+                    Transform rootBone = sk.rootBone;
 
+                    if (rootBone != null)
+                    {
+                        Vector3 localScale = rootBone.localScale;
+
+                        if (facingDir.x < 0)
+                            if (!_flip)
+                            {
+                                localScale.x = -Mathf.Abs(localScale.x);
+                            }
+                            else
+                            {
+                                localScale.x = Mathf.Abs(localScale.x);
+                            }
+                        else if (facingDir.x > 0)
+                            if (!_flip)
+                            {
+                                localScale.x = Mathf.Abs(localScale.x);
+                            }
+                            else
+                            {
+                                localScale.x = -Mathf.Abs(localScale.x);
+                            }
+                        rootBone.localScale = localScale;
+                    }
+                }
+                else if (sk == null)
+                {                        
                     if (facingDir.x < 0)
-                        localScale.x = -Mathf.Abs(localScale.x); // flip left
+                    {
+                            sr.flipX = _flip ? false :true;
+                    }
                     else if (facingDir.x > 0)
-                        localScale.x = Mathf.Abs(localScale.x); // face right
-
-                    rootBone.localScale = localScale;
-                }
-            }
-            else
-            {
-                if (facingDir.x < 0)
-                {
-                    foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
-                        sr.flipX = true;
-                }
-                else if (facingDir.x > 0)
-                {
-                    foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
-                        sr.flipX = false;
+                    {
+                            sr.flipX = _flip ? true : false;
+                    }
                 }
             }
             
+            
         }
-        private void LateUpdate(){
+        private void LateUpdate() {
             _currentClipName = _controllerHandler._animator.GetCurrentAnimatorStateInfo(0).shortNameHash;
 
+        }
+        private void FlipRigSprite(Vector3 localScale)
+        {
+            localScale.x = Mathf.Abs(localScale.x);
         }
         private void ApplyHitbox(int hitboxNum)
         {

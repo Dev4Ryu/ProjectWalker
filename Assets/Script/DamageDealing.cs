@@ -57,6 +57,8 @@ namespace StarterAssets
                 }
                 _targetData._health = _targetData._health - _damage;
                 Destroy(gameObject);
+                TurnBaseManager.turnBaseData.queue++;
+                TurnBaseManager.turnBaseData.charSelect = null;
             }
             
         }

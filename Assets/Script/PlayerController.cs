@@ -26,18 +26,6 @@ namespace StarterAssets
 
         public float checkAnimation;
 
-        //zooming
-        [Header("ZoomCamera")]
-        [Tooltip("camera")]
-        public float zoomMax = 20f;
-        public float zoomMin = 10f;
-        public float zoomSpeed = 12f;
-        public float zoomFactor = 0.5f;
-        public float zoom = 20f;
-        public float cameraDistance = 20f;
-
-        public CinemachinePositionComposer cinemachineVirtualCamera;
-
         private bool IsCurrentDeviceMouse
         {
             get
@@ -72,10 +60,6 @@ namespace StarterAssets
             {
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             }
-            if (cinemachineVirtualCamera == null)
-            {
-                cinemachineVirtualCamera = GameObject.FindGameObjectWithTag("CinemachineTarget").GetComponent<CinemachinePositionComposer>();
-            }
         }
 
         public override void Update()
@@ -86,19 +70,8 @@ namespace StarterAssets
                 Move();
             }
             Aimming();
-            CameraZooming();
             GroundedCheck();
             Gravity();
-        }
-        private void CameraZooming()
-        {
-            float scrollInput = Input.GetAxis("Mouse ScrollWheel");
-
-            zoom -= scrollInput * zoomFactor;
-            zoom = Mathf.Clamp(zoom, zoomMin, zoomMax);
-            cameraDistance = Mathf.Lerp(cameraDistance,this.zoom,Time.deltaTime * this.zoomSpeed);
-
-            cinemachineVirtualCamera.CameraDistance = cameraDistance;
         }
         private void RotateRelative(float smoothRotate)
         {
