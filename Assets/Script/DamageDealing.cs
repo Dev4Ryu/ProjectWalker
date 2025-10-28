@@ -55,10 +55,11 @@ namespace StarterAssets
                     _targetData.ChangeAnimation("Stunt");
                     _targetData.ApplyImpluse(_knockBack);
                 }
+                
                 _targetData._health = _targetData._health - _damage;
-                Destroy(gameObject);
                 TurnBaseManager.turnBaseData.queue++;
                 TurnBaseManager.turnBaseData.charSelect = null;
+                Destroy(gameObject);
             }
             
         }

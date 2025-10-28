@@ -5,10 +5,12 @@ public class SpriteVisibilityByCamera : MonoBehaviour
 {
     [Header("Culling Settings")]
     public float buffer = 1f; // extra margin outside the screen before hiding
+    public float refreshRate = 0.5f; // how often to rescan for new sprites
 
     private Camera cam;
-    private List<SpriteRenderer> allSprites = new List<SpriteRenderer>();
+    private readonly List<SpriteRenderer> allSprites = new List<SpriteRenderer>();
     private Plane[] camPlanes;
+    private float refreshTimer;
 
     void Start()
     {
@@ -20,26 +22,41 @@ public class SpriteVisibilityByCamera : MonoBehaviour
             return;
         }
 
-        // Find all sprites in the scene
-        SpriteRenderer[] foundSprites = FindObjectsOfType<SpriteRenderer>();
-        allSprites.AddRange(foundSprites);
+        RefreshSpriteList();
+    }
+
+    void Update()
+    {
+        // Regularly refresh sprite list for newly created or destroyed sprites
+        refreshTimer += Time.deltaTime;
+        if (refreshTimer >= refreshRate)
+        {
+            RefreshSpriteList();
+            refreshTimer = 0f;
+        }
     }
 
     void LateUpdate()
     {
-        // Get the camera’s frustum planes
         camPlanes = GeometryUtility.CalculateFrustumPlanes(cam);
 
-        foreach (var sr in allSprites)
+        for (int i = 0; i < allSprites.Count; i++)
         {
-            if (sr == null) continue;
+            var sr = allSprites[i];
+            if (sr == null)
+                continue; // skip destroyed sprites
 
             Bounds bounds = sr.bounds;
-            bounds.Expand(buffer); // small margin to prevent flickering
+            bounds.Expand(buffer);
 
-            // Check if sprite is within camera frustum
             bool isVisible = GeometryUtility.TestPlanesAABB(camPlanes, bounds);
             sr.enabled = isVisible;
         }
+    }
+
+    private void RefreshSpriteList()
+    {
+        allSprites.Clear();
+        allSprites.AddRange(FindObjectsOfType<SpriteRenderer>());
     }
 }

@@ -1,48 +1,77 @@
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-public class LevelManager : MonoBehaviour
-{
-    [SerializeField]
-    public List<GameObject> path;
-    public List<GameObject> newBlock;
-    public List<GameObject> newPath;
-    public int gapBlock;
-    public float timeOut;
-    public string loadSceneName;
-    public LoadingScene loadSceneManager;
-    private int cleanPath;
-    private float timeTick;
-    void Update()
+using Unity.AI.Navigation; // <--- IMPORTANT
+
+namespace StarterAssets
+{    
+    public class LevelManager : MonoBehaviour
     {
-        timeTick += Time.deltaTime;
-        foreach (GameObject obj in path)
+        [System.Serializable]
+        public class StoryPath
         {
-            if(obj != null){
-                obj.transform.position -= new Vector3(0,0,0.4f);
-            }
+            public GameObject path;
+            public int level;
         }
-        if(path[0].transform.position.z <= -35){
-            GeneratePath();
-        }
-    }
-    private void GeneratePath(){
-        GameObject nextPath = Instantiate(newPath[Random.Range(0,newPath.Count)], path[path.Count-1].transform.position 
-        + new Vector3(0,0,gapBlock),transform.rotation,this.transform);
+
+        public List<GameObject> path;
+        public List<GameObject> newPath;
+        public List<StoryPath> storyPath;
+        public GameObject blockPath;
+        public int gapPath;
+        public int level;
+        public int playerDistance = 60;
+        public LoadingScene loadSceneManager;
+
+        public NavMeshSurface navMeshSurface; // <--- add this
         
-        path.Add(nextPath);
-        Destroy(path[0].gameObject);
-        path.RemoveAt(0);
-        if(timeTick >= timeOut){
-            cleanPath++;
-            print("clean: " + cleanPath);
-            if(cleanPath >= path.Count + path.Count/2){
-                timeTick = 0.0f;
-                loadSceneManager.LoadLevelBtn(loadSceneName);
+        void Start()
+        {
+            level = path.Count;
+        }
+        void Update()
+        {
+            if (Vector3.Distance(path[0].transform.position,
+                TurnBaseManager.turnBaseData.player.transform.position) >= playerDistance)
+            {
+                GeneratePath();
+                blockPath.transform.position = new Vector3(
+                    blockPath.transform.position.x + gapPath, 0, 0);
             }
-        }else{
-            GameObject nextBlock = Instantiate(newBlock[Random.Range(0,newBlock.Count)], 
-            nextPath.transform.position,nextPath.transform.rotation,nextPath.transform);
+        }
+
+        private void GeneratePath()
+        {
+            foreach (StoryPath spawnPath in storyPath)
+            {
+                if (level == spawnPath.level)
+                {
+                    SpawnPath(spawnPath.path);
+                }
+                else
+                {
+                    
+                    SpawnPath(newPath[Random.Range(0, newPath.Count)]);
+                }
+            }
+        }
+        private void SpawnPath(GameObject spawnPath)
+        {
+            GameObject nextPath = Instantiate(spawnPath, path[path.Count - 1].transform.position + new Vector3(gapPath, 0, 0),
+                transform.rotation,
+                this.transform
+            );
+
+            path.Add(nextPath);
+            DestroyImmediate(path[0].gameObject);
+            path.RemoveAt(0);
+
+            level++;
+
+            if (navMeshSurface != null)
+            {
+                navMeshSurface.BuildNavMesh();
+            }
         }
     }
 }

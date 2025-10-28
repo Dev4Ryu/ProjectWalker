@@ -28,7 +28,7 @@ namespace StarterAssets
         public float zoomFactor = 200f;
         public float zoom = 20f;
         private float cameraDistance = 20f;
-        private CinemachinePositionComposer cinemachineVirtualCamera;
+        public CinemachinePositionComposer cinemachineVirtualCamera;
 
         void Awake()
         {
@@ -65,8 +65,9 @@ namespace StarterAssets
             else
             {
                 player.enabled = true;
-                CameraZooming();
+                queue = 0;
             }
+            CameraZooming();
         }
 
         void TurnHandler()

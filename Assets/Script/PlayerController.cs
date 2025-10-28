@@ -69,7 +69,7 @@ namespace StarterAssets
             {
                 Move();
             }
-            Aimming();
+            Click();
             GroundedCheck();
             Gravity();
         }
@@ -126,13 +126,8 @@ namespace StarterAssets
                 _animator.SetFloat(_animIDSpeed, _animationBlend);
                 _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                print("ok");
-                Attack(0);
-            }
         }
-        public void Aimming()
+        public void Click()
         {
             if (!EventSystem.current.IsPointerOverGameObject())
             {
@@ -143,18 +138,17 @@ namespace StarterAssets
                 Plane groundPlane = new Plane(Vector3.up, transform.position);
 
 
-                if (Physics.Raycast(mouseRay, out hit) && _input.attack)
+                if (Physics.Raycast(mouseRay, out hit))
                 {
-                    TurnBaseManager.turnBaseData.charSelect = hit.collider.GetComponent<AIController>();
+                    if (_input.attack) TurnBaseManager.turnBaseData.charSelect = hit.collider.GetComponent<AIController>();
                 }
             }
         }
-        public void Attack(int _move)
+        public void AnimationPerform(int _move)
         {
             AIController charSelect = TurnBaseManager.turnBaseData.charSelect;
             if (charSelect != null)
             {
-                print(_combat.AbilityMove[_move].moveName);
                 if (Vector3.Distance(transform.position, charSelect.transform.position) <= 10)
                 {
                     Quaternion rotation = Quaternion.LookRotation(charSelect.transform.position - transform.position);

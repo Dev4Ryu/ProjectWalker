@@ -9,24 +9,19 @@ namespace MenuAssets
     public class MenuHandler : MonoBehaviour
     {
 
-        private void PlayGame()
+        public void GoToLink(string url)
         {
-            StartCoroutine(LoadingScene("UntitledScene"));
+            Application.OpenURL(url);
         }
-        private void QuitGame()
+        public void QuitGame()
         {
-            Debug.Log("Exit Game");
-            Application.Quit();
-        }
-        public IEnumerator LoadingScene(string SceneToLoad)
-        {
-            AsyncOperation operation = SceneManager.LoadSceneAsync(SceneToLoad);
+        Debug.Log("Quitting game...");
+        Application.Quit();
 
-            while (!operation.isDone)
-            {
-                yield return null;
-            }
+        // Optional for Editor testing
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #endif
         }
-        
     }
 }

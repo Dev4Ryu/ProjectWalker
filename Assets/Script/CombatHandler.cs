@@ -16,6 +16,7 @@ namespace StarterAssets
         
         public int knockBack;
         public bool stunt;
+        public bool lockTarget;
     }
     [System.Serializable]
     public class AbilityMove
@@ -64,17 +65,25 @@ namespace StarterAssets
             }
             else if (_health <= 0 && _canBeDestroy)
             {
-                ChangeAnimation("dead");
-                if (TurnBaseManager.turnBaseData.charQueue[TurnBaseManager.turnBaseData.queue] != GetComponent<AIController>())
+                if (TurnBaseManager.turnBaseData.charQueue[TurnBaseManager.turnBaseData.queue] == GetComponent<AIController>())
                 {
                     TurnBaseManager.turnBaseData.charQueue.Remove(_controllerHandler);
+                    ChangeAnimation("Died");
                 }
                 else
                 {
-                    _controllerHandler.enabled = false; 
+                    _controllerHandler.enabled = false;
                 }
-                
+
             }
+            FlipRigSprite();
+        }
+        private void LateUpdate() {
+            _currentClipName = _controllerHandler._animator.GetCurrentAnimatorStateInfo(0).shortNameHash;
+
+        }
+        private void FlipRigSprite()
+        {
             Vector3 facingDir = transform.forward;
 
             foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
@@ -121,30 +130,22 @@ namespace StarterAssets
                     }
                 }
             }
-            
-            
-        }
-        private void LateUpdate() {
-            _currentClipName = _controllerHandler._animator.GetCurrentAnimatorStateInfo(0).shortNameHash;
-
-        }
-        private void FlipRigSprite(Vector3 localScale)
-        {
-            localScale.x = Mathf.Abs(localScale.x);
         }
         private void ApplyHitbox(int hitboxNum)
         {
             Vector3 hitboxSpace = new Vector3(HitboxList[hitboxNum].hitboxSpace.x, HitboxList[hitboxNum].hitboxSpace.y, HitboxList[hitboxNum].hitboxSpace.z);
             GameObject Hitbox = Instantiate(HitboxList[hitboxNum].hitbox, transform.position + transform.forward * hitboxSpace.x + transform.right * hitboxSpace.y + transform.up * hitboxSpace.z
             , transform.rotation, transform);
+            if (HitboxList[hitboxNum].lockTarget)
+            {
+                Hitbox.transform.position = TurnBaseManager.turnBaseData.charSelect.transform.position;
+            }
             
             DamageDealing hitboxCom = Hitbox.GetComponent<DamageDealing>();
             hitboxCom._permenant = HitboxList[hitboxNum].permenant;
             hitboxCom._damage = HitboxList[hitboxNum].damage;
             hitboxCom._stunt = HitboxList[hitboxNum].stunt;
             hitboxCom._knockBack = HitboxList[hitboxNum].knockBack;
-
-            // TurnBaseManager.turnBaseData.queue++;
         }
         public void ApplyImpluse(float _applyImpluse)
         {
@@ -166,14 +167,13 @@ namespace StarterAssets
         {
             _controllerHandler._animator.CrossFadeInFixedTime(animation, 0);
         }
-        private void OnMouseEnter() {
-            foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
-                    sr.material.EnableKeyword("_EMISSION");
-            
+        public void Died()
+        {
+            Destroy(gameObject);
         }
-        private void OnMouseExit() {
-            foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
-                    sr.material.DisableKeyword("_EMISSION");
+        public void CameraShake()
+        {
+            TurnBaseManager.turnBaseData.StartCoroutine(TurnBaseManager.turnBaseData.Shake(1f,0.6f));
         }
     }
 }

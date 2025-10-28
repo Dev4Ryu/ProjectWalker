@@ -30,6 +30,8 @@ namespace StarterAssets
             _controller = GetComponent<CharacterController>();
 
             AssignAnimationIDs();
+
+            this.transform.parent = null;
         }
 
         void OnDisable()
@@ -58,7 +60,7 @@ namespace StarterAssets
             PlayerRange = Vector3.Distance(transform.position, Target.position);
             _thisAgent.SetDestination(Target.position);
 
-            if (_thisAgent.remainingDistance > _thisAgent.stoppingDistance)
+            if (_thisAgent.remainingDistance > _thisAgent.stoppingDistance && _animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
                 MoveAI(_thisAgent.desiredVelocity.normalized, _thisAgent.desiredVelocity.magnitude);
             else
                 MoveAI(_thisAgent.desiredVelocity.normalized, 0f);
@@ -150,13 +152,13 @@ namespace StarterAssets
             Quaternion rotation = Quaternion.LookRotation(Target.transform.position - transform.position);
             transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 2);
             _combat.ChangeAnimation(_combat.AbilityMove[0].moveName);
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(0.5f);
         }
 
         private void Attack()
         {
             PlayerRange = Vector3.Distance(transform.position, Target.position);
-            if (PlayerRange < 2 && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            if (PlayerRange < 2 && _animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
                 StartCoroutine(EnemyAttack());
             }
