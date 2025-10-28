@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
  using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 namespace StarterAssets
 {
@@ -64,20 +65,42 @@ namespace StarterAssets
                 Destroy(gameObject);
                 TurnBaseManager.turnBaseData.charQueue.Remove(_controllerHandler);
             }
+            Vector3 facingDir = transform.forward;
+
+            SpriteSkin spriteSkin = GetComponentInChildren<SpriteSkin>();
+
+            if (spriteSkin != null)
+            {
+                Transform rootBone = spriteSkin.rootBone;
+                if (rootBone != null)
+                {
+                    Vector3 localScale = rootBone.localScale;
+
+                    if (facingDir.x < 0)
+                        localScale.x = -Mathf.Abs(localScale.x); // flip left
+                    else if (facingDir.x > 0)
+                        localScale.x = Mathf.Abs(localScale.x); // face right
+
+                    rootBone.localScale = localScale;
+                }
+            }
+            else
+            {
+                if (facingDir.x < 0)
+                {
+                    foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
+                        sr.flipX = true;
+                }
+                else if (facingDir.x > 0)
+                {
+                    foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
+                        sr.flipX = false;
+                }
+            }
+            
         }
         private void LateUpdate(){
             _currentClipName = _controllerHandler._animator.GetCurrentAnimatorStateInfo(0).shortNameHash;
-
-            if (_controllerHandler._targetRotation < 0)
-            {
-                foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
-                    sr.flipX = true;
-            }
-            else if (_controllerHandler._targetRotation > 0)
-            {
-                foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
-                    sr.flipX = false;
-            }
 
         }
         private void ApplyHitbox(int hitboxNum)

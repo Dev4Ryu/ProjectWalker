@@ -49,6 +49,9 @@ TagManager:
   - name: Overworld
     uniqueID: 1783922117
     locked: 0
+  - name: ForeGround
+    uniqueID: 734948291
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1
