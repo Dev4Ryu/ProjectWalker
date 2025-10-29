@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using Unity.Cinemachine;
+using System.Runtime.InteropServices;
 
 namespace StarterAssets
 {
@@ -14,12 +15,10 @@ namespace StarterAssets
         public List<ControllerHandler> charQueue = new List<ControllerHandler>();
         public CombatHandler combatTurnBase;
         public Vector3 originDistance;
-
-        public float distance;
-
+        public bool savedOriginal;
         public bool _turnBaseMode = false;
         public int queue;
-        public AIController charSelect;
+        public ControllerHandler charSelect;
         [Header("ZoomCamera")]
         [Tooltip("camera")]
         public float zoomMax = 20f;
@@ -43,9 +42,8 @@ namespace StarterAssets
         {
             if (player != null)
             {
-                charQueue.AddRange(FindObjectsOfType<PlayerController>());
+                charQueue.Add(FindObjectOfType<PlayerController>());
             }
-            charQueue.AddRange(FindObjectsOfType<AIController>());
         }
 
         void Update()
@@ -55,12 +53,6 @@ namespace StarterAssets
             if (_turnBaseMode)
             {
                 TurnHandler();
-
-                float distanceCost = Vector3.Distance(player.transform.position, originDistance);
-                distance = distanceCost;
-                float walkCost = (distance / 100) * combatTurnBase._maxAction;//walking cost ap decrease
-
-                combatTurnBase._action = combatTurnBase._action - (int)walkCost;//calculation of walking
             }
             else
             {
@@ -72,17 +64,43 @@ namespace StarterAssets
 
         void TurnHandler()
         {
-            queue = queue % charQueue.Count; //queue can be loop
+            charQueue.RemoveAll(item => item == null);
+
+            if (charQueue.Count == 0) return;
+
+            queue = queue % charQueue.Count; // queue can loop
+
+            SaveOrigin(charQueue[queue].transform.position);
+
             for (int i = 0; i < charQueue.Count; i++)
             {
-                charQueue[i].enabled = i == queue ? true : false;//enabled only the character turn 
+                charQueue[i].enabled = i == queue; // enable only the active turn
 
                 if (charQueue[i].enabled)
                 {
                     combatTurnBase = charQueue[i].GetComponent<CombatHandler>();
+
+                    float distance = Vector3.Distance(charQueue[i].transform.position, originDistance);
+                    float walkCost = (distance / 10) * combatTurnBase._maxAction;//walking cost ap decrease
+
+                    combatTurnBase._action = (int)((int)combatTurnBase._maxAction - walkCost) + 1;//calculation of walking
+                    if (walkCost >= combatTurnBase._maxAction)
+                    {
+                        print("bc walkCost");
+                        if (player.enabled == true)
+                        {
+                            combatTurnBase.ApplyImpluse(-combatTurnBase._speedMove);
+                        }
+                        else
+                        {
+                            queue++;
+                            savedOriginal = true;
+                        }
+                    }
                 }
             }
         }
+
         void CameraZooming()
         {
             float scrollInput = Input.GetAxis("Mouse ScrollWheel");
@@ -97,20 +115,24 @@ namespace StarterAssets
         {
             CinemachineBasicMultiChannelPerlin perlin = cinemachineVirtualCamera.GetComponent<CinemachineBasicMultiChannelPerlin>();
 
-            if (perlin != null)
+
+            float originalIntensity = 0;
+            perlin.AmplitudeGain = intensity;
+
+            float timer = 0f;
+            while (timer < duration)
             {
-                float originalIntensity = perlin.AmplitudeGain;
-                perlin.AmplitudeGain = intensity;
-
-                float timer = 0f;
-                while (timer < duration)
-                {
-                    timer += Time.deltaTime;
-                    yield return null;
-                }
-
-                perlin.AmplitudeGain = originalIntensity;
+                timer += Time.deltaTime;
+                yield return null;
             }
+
+            perlin.AmplitudeGain = originalIntensity;
+        }
+        public void SaveOrigin(Vector3 originPos)
+        {
+            if (savedOriginal == true)
+                originDistance = originPos;
+            savedOriginal = false;
         }
         
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
  using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
+using System.Runtime.InteropServices;
 
 namespace StarterAssets
 {
@@ -15,7 +16,7 @@ namespace StarterAssets
         public int damage;
         
         public int knockBack;
-        public bool stunt;
+        public bool skipTurn;
         public bool lockTarget;
     }
     [System.Serializable]
@@ -65,16 +66,11 @@ namespace StarterAssets
             }
             else if (_health <= 0 && _canBeDestroy)
             {
-                if (TurnBaseManager.turnBaseData.charQueue[TurnBaseManager.turnBaseData.queue] == GetComponent<AIController>())
+                int queue = TurnBaseManager.turnBaseData.queue;
+                if (_controllerHandler._animator.GetCurrentAnimatorStateInfo(0).IsName("Stunt"))
                 {
-                    TurnBaseManager.turnBaseData.charQueue.Remove(_controllerHandler);
                     ChangeAnimation("Died");
                 }
-                else
-                {
-                    _controllerHandler.enabled = false;
-                }
-
             }
             FlipRigSprite();
         }
@@ -119,14 +115,14 @@ namespace StarterAssets
                     }
                 }
                 else if (sk == null)
-                {                        
+                {
                     if (facingDir.x < 0)
                     {
-                            sr.flipX = _flip ? false :true;
+                        sr.flipX = _flip ? false : true;
                     }
                     else if (facingDir.x > 0)
                     {
-                            sr.flipX = _flip ? true : false;
+                        sr.flipX = _flip ? true : false;
                     }
                 }
             }
@@ -144,12 +140,12 @@ namespace StarterAssets
             DamageDealing hitboxCom = Hitbox.GetComponent<DamageDealing>();
             hitboxCom._permenant = HitboxList[hitboxNum].permenant;
             hitboxCom._damage = HitboxList[hitboxNum].damage;
-            hitboxCom._stunt = HitboxList[hitboxNum].stunt;
+            hitboxCom._skipTurn = HitboxList[hitboxNum].skipTurn;
             hitboxCom._knockBack = HitboxList[hitboxNum].knockBack;
         }
         public void ApplyImpluse(float _applyImpluse)
         {
-            _impluse += _applyImpluse;
+            _impluse = _applyImpluse;
         }
         private void Impluse()
         {
@@ -167,13 +163,27 @@ namespace StarterAssets
         {
             _controllerHandler._animator.CrossFadeInFixedTime(animation, 0);
         }
+        public void ChangeEffect(string animation)
+        {
+            _controllerHandler._animator.CrossFadeInFixedTime(animation, 1);
+        }
         public void Died()
         {
             Destroy(gameObject);
         }
         public void CameraShake()
         {
-            TurnBaseManager.turnBaseData.StartCoroutine(TurnBaseManager.turnBaseData.Shake(1f,0.6f));
+            TurnBaseManager.turnBaseData.StartCoroutine(TurnBaseManager.turnBaseData.Shake(1f, 0.6f));
         }
+        void OnMouseOver()
+        {
+            foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
+                sr.material.EnableKeyword("_EMISSION");
+        }
+        void OnMouseExit()
+            {
+                foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
+                sr.material.DisableKeyword("_EMISSION");
+            }
     }
 }

@@ -28,6 +28,10 @@ namespace StarterAssets
         void Start()
         {
             level = path.Count;
+            if (navMeshSurface != null)
+            {
+                navMeshSurface.BuildNavMesh();
+            }
         }
         void Update()
         {

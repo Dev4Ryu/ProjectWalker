@@ -15,7 +15,7 @@ namespace StarterAssets
         public int _damage;
         public int _knockBack;
         public bool _permenant; 
-        public bool _stunt;
+        public bool _skipTurn;
 
         private float _timer = 0.3f;
         public float _projectileSpeed;
@@ -44,20 +44,15 @@ namespace StarterAssets
             {
                 if (_haveOwner) {
                     _combat.ApplyImpluse(_combat._impluse * 0);
+                    Vector3 enemy = new Vector3(other.transform.position.x, 0f, other.transform.position.z);
+                    Quaternion rotation = Quaternion.LookRotation(-transform.parent.forward);
+                    other.transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 2);   
                 }
-                if (_stunt)
-                {
-                    if (_haveOwner) {
-                        Vector3 enemy = new Vector3(other.transform.position.x, 0f, other.transform.position.z);
-                        Quaternion rotation = Quaternion.LookRotation(-transform.parent.forward);
-                        other.transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 2);   
-                    }
-                    _targetData.ChangeAnimation("Stunt");
-                    _targetData.ApplyImpluse(_knockBack);
-                }
-                
+                _targetData.ChangeAnimation("Stunt");
+                _targetData.ApplyImpluse(_knockBack);
                 _targetData._health = _targetData._health - _damage;
                 TurnBaseManager.turnBaseData.queue++;
+                TurnBaseManager.turnBaseData.savedOriginal = true;
                 TurnBaseManager.turnBaseData.charSelect = null;
                 Destroy(gameObject);
             }

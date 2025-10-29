@@ -336,8 +336,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2811779394694028927}
-  - component: {fileID: 4054179454010317960}
-  - component: {fileID: 6853975921389269963}
   m_Layer: 0
   m_Name: Map1
   m_TagString: Untagged
@@ -364,48 +362,6 @@ Transform:
   - {fileID: 7503488409859845290}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4054179454010317960
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2807761504058163266}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 60, y: 10, z: 1}
-  m_Center: {x: -3.5, y: 5, z: 10}
---- !u!65 &6853975921389269963
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2807761504058163266}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 60, y: 10, z: 1}
-  m_Center: {x: -3.5, y: 5, z: -24}
 --- !u!1 &4558493456759322316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,6 +1259,10 @@ PrefabInstance:
     - target: {fileID: 5663807677822759104, guid: 23dfe7cc6c9c1a0429ede65189e8bfeb, type: 3}
       propertyPath: m_Name
       value: Snow (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663807677822759104, guid: 23dfe7cc6c9c1a0429ede65189e8bfeb, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8460500573512861355, guid: 23dfe7cc6c9c1a0429ede65189e8bfeb, type: 3}
       propertyPath: m_LocalScale.x
@@ -2723,6 +2683,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree2
       objectReference: {fileID: 0}
+    - target: {fileID: 1297363537493522251, guid: 7706e56db2433474db1518d51ab2c258, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -3298,6 +3262,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snow (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 5663807677822759104, guid: 23dfe7cc6c9c1a0429ede65189e8bfeb, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8460500573512861355, guid: 23dfe7cc6c9c1a0429ede65189e8bfeb, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.82322
@@ -3631,6 +3599,10 @@ PrefabInstance:
     - target: {fileID: 1297363537493522251, guid: 7706e56db2433474db1518d51ab2c258, type: 3}
       propertyPath: m_Name
       value: Tree2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1297363537493522251, guid: 7706e56db2433474db1518d51ab2c258, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4093,6 +4065,10 @@ PrefabInstance:
     - target: {fileID: 1297363537493522251, guid: 7706e56db2433474db1518d51ab2c258, type: 3}
       propertyPath: m_Name
       value: Tree2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1297363537493522251, guid: 7706e56db2433474db1518d51ab2c258, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4849,6 +4825,10 @@ PrefabInstance:
     - target: {fileID: 5663807677822759104, guid: 23dfe7cc6c9c1a0429ede65189e8bfeb, type: 3}
       propertyPath: m_Name
       value: Snow (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663807677822759104, guid: 23dfe7cc6c9c1a0429ede65189e8bfeb, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8460500573512861355, guid: 23dfe7cc6c9c1a0429ede65189e8bfeb, type: 3}
       propertyPath: m_LocalScale.x

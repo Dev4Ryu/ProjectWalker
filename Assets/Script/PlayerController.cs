@@ -68,8 +68,8 @@ namespace StarterAssets
             if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
                 Move();
+                Click();
             }
-            Click();
             GroundedCheck();
             Gravity();
         }
@@ -138,16 +138,24 @@ namespace StarterAssets
                 Plane groundPlane = new Plane(Vector3.up, transform.position);
 
 
+                if (Physics.Raycast(mouseRay, out hit, 60, LayerMask.GetMask("Character")))
+                {
+                    if (_input.attack) TurnBaseManager.turnBaseData.charSelect = hit.collider.GetComponent<ControllerHandler>();
+                    { }
+                }
                 if (Physics.Raycast(mouseRay, out hit))
                 {
-                    if (_input.attack) TurnBaseManager.turnBaseData.charSelect = hit.collider.GetComponent<AIController>();
+                    if (_input.attack && hit.collider.CompareTag("Totem"))
+                    {
+                        
+                    }
                 }
             }
         }
         public void AnimationPerform(int _move)
         {
-            AIController charSelect = TurnBaseManager.turnBaseData.charSelect;
-            if (charSelect != null)
+            ControllerHandler charSelect = TurnBaseManager.turnBaseData.charSelect;
+            if (charSelect != null && _animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
                 if (Vector3.Distance(transform.position, charSelect.transform.position) <= 10)
                 {

@@ -149,7 +149,7 @@ ScriptedImporter:
       guid: ac82b62e31b85634193baf8696096b85
       position: {x: -9.345795, y: 12.110107, z: 0}
       rotation: {x: 0, y: 0, z: 0.7127179, w: 0.7014509}
-      length: 48.33484
+      length: 48.33483
       parentId: -1
       color:
         serializedVersion: 2
@@ -578,7 +578,7 @@ ScriptedImporter:
         rgba: 4286643968
     - name: head
       guid: 114938e1bf3afb54682e986fb5031d9a
-      position: {x: 79.02308, y: 1.8220699, z: 0}
+      position: {x: 79.02309, y: 1.8220699, z: 0}
       rotation: {x: 0, y: 0, z: 0.022272721, w: 0.9997519}
       length: 100.317085
       parentId: 3
@@ -596,7 +596,7 @@ ScriptedImporter:
         rgba: 4294934528
     - name: spine1
       guid: 6c00cdbfad12cf24e864a7c7a45c4339
-      position: {x: 195.88406, y: 0.4388199, z: 0}
+      position: {x: 195.88406, y: 0.43881226, z: 0}
       rotation: {x: 0, y: 0, z: 0.7087566, w: 0.70545316}
       length: 46.438084
       parentId: -1
@@ -605,7 +605,7 @@ ScriptedImporter:
         rgba: 4278223103
     - name: arm_L
       guid: 98f5ca00a1ae1a143b48a4cdfb45573a
-      position: {x: 35.64189, y: -92.248955, z: 0}
+      position: {x: 35.6419, y: -92.248955, z: 0}
       rotation: {x: 0, y: 0, z: -0.9019011, w: 0.43194267}
       length: 80.7835
       parentId: 3
@@ -1284,7 +1284,7 @@ ScriptedImporter:
       guid: ac82b62e31b85634193baf8696096b85
       position: {x: 68.654205, y: 25.110107, z: 0}
       rotation: {x: 0, y: 0, z: 0.7127179, w: 0.7014509}
-      length: 48.33484
+      length: 48.33483
       parentId: -1
       color:
         serializedVersion: 2
@@ -2512,7 +2512,7 @@ ScriptedImporter:
       guid: ac82b62e31b85634193baf8696096b85
       position: {x: 78.654205, y: 74.11011, z: 0}
       rotation: {x: 0, y: 0, z: 0.7127179, w: 0.7014509}
-      length: 48.33484
+      length: 48.33483
       parentId: -1
       color:
         serializedVersion: 2
@@ -2878,7 +2878,7 @@ ScriptedImporter:
       guid: ac82b62e31b85634193baf8696096b85
       position: {x: -9.345795, y: 70.11011, z: 0}
       rotation: {x: 0, y: 0, z: 0.7127179, w: 0.7014509}
-      length: 48.33484
+      length: 48.33483
       parentId: -1
       color:
         serializedVersion: 2
@@ -3269,7 +3269,7 @@ ScriptedImporter:
       guid: ac82b62e31b85634193baf8696096b85
       position: {x: 165.6542, y: 69.11011, z: 0}
       rotation: {x: 0, y: 0, z: 0.7127179, w: 0.7014509}
-      length: 48.33484
+      length: 48.33483
       parentId: -1
       color:
         serializedVersion: 2
@@ -3847,7 +3847,7 @@ ScriptedImporter:
       guid: ac82b62e31b85634193baf8696096b85
       position: {x: 196.6542, y: 74.110115, z: 0}
       rotation: {x: 0, y: 0, z: 0.7127179, w: 0.7014509}
-      length: 48.33484
+      length: 48.33483
       parentId: -1
       color:
         serializedVersion: 2
@@ -3899,7 +3899,7 @@ ScriptedImporter:
         rgba: 4294902015
     - name: spine1
       guid: 6c00cdbfad12cf24e864a7c7a45c4339
-      position: {x: 48.33484, y: -0.00000761584, z: 0}
+      position: {x: 48.33483, y: -0.000007494276, z: 0}
       rotation: {x: 0, y: 0, z: -0.005631124, w: 0.99998415}
       length: 46.43808
       parentId: 0
@@ -3999,7 +3999,7 @@ ScriptedImporter:
       order: 0
     dimension: {x: 0, y: 0}
     characterGroups: []
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.47632736, y: 0.01705899}
     boneReadOnly: 0
   platformSettings:
   - name: DefaultTexturePlatform
@@ -4040,8 +4040,8 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   mosaicLayers: 1
   characterMode: 1
-  documentPivot: {x: 0.5, y: 0}
-  documentAlignment: 7
+  documentPivot: {x: 0.47632736, y: 0.01705899}
+  documentAlignment: 9
   importHiddenLayers: 0
   layerMappingOption: 2
   generatePhysicsShape: 0

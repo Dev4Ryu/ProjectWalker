@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
+using System.Runtime.InteropServices;
 
 namespace StarterAssets
 {
@@ -8,7 +9,8 @@ namespace StarterAssets
     {
         [Header("AI")]
         [Tooltip("Target destination for Nav Mesh Agent as Transform")]
-        public Transform Target;
+        public Transform _target;
+        private PlayerController _player;
 
         [Tooltip("Distance of target and enemy.")]
         public float PlayerRange;
@@ -18,6 +20,9 @@ namespace StarterAssets
 
         [Tooltip("How long AI waits before picking a new random destination.")]
         public float WanderDelay = 3f;
+        [Tooltip("Monster Perspective")]
+        public float attackRange;
+        public Vector2 visonRange;
 
         private NavMeshAgent _thisAgent;
         private bool _isWandering = false;
@@ -32,21 +37,32 @@ namespace StarterAssets
             AssignAnimationIDs();
 
             this.transform.parent = null;
-        }
-
-        void OnDisable()
-        {
-            if (_thisAgent != null)
-                _thisAgent.SetDestination(transform.position);
+            _player = TurnBaseManager.turnBaseData.player;
         }
 
         public override void Update()
         {
-            if (Target != null)
+            PlayerRange = Vector3.Distance(transform.position, _player.transform.position);
+            if (PlayerRange < visonRange.x && _target == null)
+            {
+                _target = _player.transform;
+                TurnBaseManager.turnBaseData.charQueue.Add(this);
+                if (TurnBaseManager.turnBaseData.queue == 0)
+                {
+                    TurnBaseManager.turnBaseData.queue++;
+                    TurnBaseManager.turnBaseData.savedOriginal = true;
+                }
+            }
+            else if (PlayerRange > visonRange.y && _target != null)
+            {
+                _target = null;
+                TurnBaseManager.turnBaseData.charQueue.Remove(this);
+            }
+            if (_target != null)
             {
                 HandleChaseAndAttack();
             }
-            else
+            else if(!TurnBaseManager.turnBaseData._turnBaseMode)
             {
                 HandleWander();
             }
@@ -57,8 +73,8 @@ namespace StarterAssets
 
         private void HandleChaseAndAttack()
         {
-            PlayerRange = Vector3.Distance(transform.position, Target.position);
-            _thisAgent.SetDestination(Target.position);
+            PlayerRange = Vector3.Distance(transform.position, _target.position);
+            _thisAgent.SetDestination(_target.position);
 
             if (_thisAgent.remainingDistance > _thisAgent.stoppingDistance && _animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
                 MoveAI(_thisAgent.desiredVelocity.normalized, _thisAgent.desiredVelocity.magnitude);
@@ -149,7 +165,7 @@ namespace StarterAssets
 
         private IEnumerator EnemyAttack()
         {
-            Quaternion rotation = Quaternion.LookRotation(Target.transform.position - transform.position);
+            Quaternion rotation = Quaternion.LookRotation(_target.transform.position - transform.position);
             transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 2);
             _combat.ChangeAnimation(_combat.AbilityMove[0].moveName);
             yield return new WaitForSeconds(0.5f);
@@ -157,10 +173,21 @@ namespace StarterAssets
 
         private void Attack()
         {
-            PlayerRange = Vector3.Distance(transform.position, Target.position);
             if (PlayerRange < 2 && _animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
                 StartCoroutine(EnemyAttack());
+            }
+        }
+        public override void OnDisable()
+        {
+            _thisAgent.enabled = false;
+            _animator.SetFloat(_animIDSpeed, 0);
+        }
+        public void OnEnable()
+        {
+            if(_thisAgent != null)
+            {
+                _thisAgent.enabled = true;
             }
         }
     }
