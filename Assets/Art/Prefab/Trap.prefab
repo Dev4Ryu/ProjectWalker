@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5455454029457229137}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2588185, y: 0, z: -0, w: 0.965926}
+  m_LocalRotation: {x: 0.25881293, y: 0, z: -0, w: 0.9659275}
   m_LocalPosition: {x: 0, y: -0.43301296, z: -0.24999954}
   m_LocalScale: {x: 0.16666666, y: 0.16666666, z: 0.16666666}
   m_ConstrainProportionsScale: 0
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 4980186233312174009}
   - component: {fileID: 7076779753077936215}
   m_Layer: 0
-  m_Name: Hitbox
+  m_Name: Trap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,7 +151,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5869326005089534281}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using Unity.Cinemachine;
-using System.Runtime.InteropServices;
 
 namespace StarterAssets
 {
@@ -13,6 +12,7 @@ namespace StarterAssets
         public static TurnBaseManager turnBaseData;
         public PlayerController player;
         public List<ControllerHandler> charQueue = new List<ControllerHandler>();
+        public DialogueBox dialogue;
         public CombatHandler combatTurnBase;
         public Vector3 originDistance;
         public bool savedOriginal;
@@ -28,6 +28,8 @@ namespace StarterAssets
         public float zoom = 20f;
         private float cameraDistance = 20f;
         public CinemachinePositionComposer cinemachineVirtualCamera;
+        [Header("EndingRoute")]
+        public bool goodEnding;
 
         void Awake()
         {
@@ -44,6 +46,10 @@ namespace StarterAssets
             {
                 charQueue.Add(FindObjectOfType<PlayerController>());
             }
+            if(dialogue != null)
+            {
+                dialogue = FindObjectOfType<DialogueBox>();
+            }
         }
 
         void Update()
@@ -54,7 +60,11 @@ namespace StarterAssets
             {
                 TurnHandler();
             }
-            else
+            else if (dialogue._popUp == true)
+            {
+                player.enabled = false;
+            }
+            else if (charQueue.Count == 1)
             {
                 player.enabled = true;
                 queue = 0;

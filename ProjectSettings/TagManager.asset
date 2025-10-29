@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - Enemy
+  - Totem
   layers:
   - Default
   - TransparentFX
@@ -51,6 +52,9 @@ TagManager:
     locked: 0
   - name: ForeGround
     uniqueID: 734948291
+    locked: 0
+  - name: UI
+    uniqueID: 1580978495
     locked: 0
   m_RenderingLayers:
   - Default

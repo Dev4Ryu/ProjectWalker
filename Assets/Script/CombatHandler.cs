@@ -8,7 +8,8 @@ using System.Runtime.InteropServices;
 namespace StarterAssets
 {
     [System.Serializable]
-    public class HitboxList
+    [CreateAssetMenu(fileName = "New Hitbox", menuName = "Hitbox")]
+    public class HitboxList : ScriptableObject
     {
         public GameObject hitbox;
         public Vector3 hitboxSpace;
@@ -20,7 +21,8 @@ namespace StarterAssets
         public bool lockTarget;
     }
     [System.Serializable]
-    public class AbilityMove
+    [CreateAssetMenu(fileName = "New Ability", menuName = "Ability")]
+    public class AbilityMove : ScriptableObject
     {
         public string moveName;
         public float distance;
