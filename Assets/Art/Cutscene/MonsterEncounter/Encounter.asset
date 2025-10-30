@@ -19,22 +19,26 @@ MonoBehaviour:
     mirror: 0
     backGround: {fileID: 2800000, guid: f42f96eed94243748aced1cda39646f4, type: 3}
     eventSpawn: {fileID: 0}
+    effect: 
   - name: Siea
     lines: I approached the dark figure, hoping for a respond. But with each steps
       I took, a stench of raw meat filled my nostrils.
     mirror: 0
     backGround: {fileID: 0}
     eventSpawn: {fileID: 0}
+    effect: 
   - name: Siea
     lines: '!!!!!'
     mirror: 0
     backGround: {fileID: 2800000, guid: ff24fb8d619375e4fad020aa01654f7e, type: 3}
     eventSpawn: {fileID: 0}
+    effect: JumpscareEffect
   - name: Creature
     lines: '"Grrh.. grrah..."'
     mirror: 1
     backGround: {fileID: 0}
     eventSpawn: {fileID: 0}
+    effect: 
   - name: Siea
     lines: Without any warning, it prowled right at me with no hesitation. Its explosive
       power was almost equivalent to one full adult male. Its hand grasped onto my
@@ -42,6 +46,7 @@ MonoBehaviour:
     mirror: 0
     backGround: {fileID: 2800000, guid: 01e06218377b56c439b85c6e9ec8c080, type: 3}
     eventSpawn: {fileID: 0}
+    effect: 
   - name: Siea
     lines: A tattoo for Lord Arva is exposed on my right arm. This was not the turn
       of event I anticipated to witness; my mother would always tell me to cover
@@ -51,20 +56,24 @@ MonoBehaviour:
     mirror: 0
     backGround: {fileID: 0}
     eventSpawn: {fileID: 0}
+    effect: 
   - name: Siea
     lines: '"A-Ahh!! Stop!!"'
     mirror: 0
     backGround: {fileID: 0}
     eventSpawn: {fileID: 0}
+    effect: 
   - name: Siea
     lines: The fear of having the tattoo revealed overwhelmed any other emotions.
       My mind was running wild.
     mirror: 0
     backGround: {fileID: 0}
     eventSpawn: {fileID: 0}
+    effect: 
   - name: Siea
     lines: I managed to pull my mind back and kicked the monster right in its stomach,
       causing it to let me go
     mirror: 0
     backGround: {fileID: 0}
     eventSpawn: {fileID: 0}
+    effect: 

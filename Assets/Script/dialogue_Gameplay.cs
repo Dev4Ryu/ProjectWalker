@@ -39,6 +39,7 @@ namespace StarterAssets{
         public float smoothPopup = 0.125f;
         public bool _popUp;
         private int lineCount;
+        private bool skip;
         void Start()
         {
             cutSceneAnimator = GetComponent<Animator>();
@@ -47,7 +48,8 @@ namespace StarterAssets{
             textBox.transform.position = target2.transform.position;
             if (startDialogueRoute != null)
             {
-                dialogueLines =  startDialogueRoute.dialogueLines;
+                dialogueLines = startDialogueRoute.dialogueLines;
+                
             }
         }
 
@@ -78,6 +80,8 @@ namespace StarterAssets{
             }
         }
         public void NextLines(){
+            if (!skip) return;
+
             StopAllCoroutines();
             if(dialogueLines.Length -1 > lineCount){
                 lineCount++;
@@ -102,10 +106,6 @@ namespace StarterAssets{
             Vector3 smoothedPosition = Vector3.Lerp(textBox.transform.position, target, smoothPopup);
             textBox.transform.position = smoothedPosition;
         }
-        public void DialogueShake(float time)
-        {
-            TurnBaseManager.turnBaseData.StartCoroutine(TurnBaseManager.turnBaseData.Shake(1f, time));
-        }
         public void ChangeBGM(AudioSource audio)
         {
             bgm = audio;
@@ -113,6 +113,7 @@ namespace StarterAssets{
         public void PlayEffect(string effect)
         {
             cutSceneAnimator.CrossFadeInFixedTime(effect, 0);
+            StartCoroutine(Skip());
             Debug.Log(effect);
         }
         public void ChangeBG()
@@ -121,6 +122,15 @@ namespace StarterAssets{
             {
                 backGround.texture = dialogueLines[lineCount].backGround;
             }
+        }
+        IEnumerator Skip()
+        {
+            skip = false;
+            AnimatorStateInfo stateInfo = cutSceneAnimator.GetCurrentAnimatorStateInfo(0);
+            float realLength = stateInfo.length / stateInfo.speed;
+
+            yield return new WaitForSeconds(stateInfo.length);
+            skip = true;
         }
     }
 }

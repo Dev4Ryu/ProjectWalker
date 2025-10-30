@@ -13,20 +13,75 @@ MonoBehaviour:
   m_Name: FirstRoute
   m_EditorClassIdentifier: Assembly-CSharp:StarterAssets:DialogueBox/DialogueRoute
   dialogueLines:
-  - name: 
-    lines: 
+  - name: SIea
+    lines: Once upon a time... On a snow-covered planet, there was a god whose light
+      shined as bright as hope for humanity.
+    mirror: 0
+    backGround: {fileID: 2800000, guid: 1e4ec811957b1c447b3f24f1eaa40031, type: 3}
+    eventSpawn: {fileID: 0}
+    effect: 
+  - name: SIea
+    lines: '"Arva" is the name for said god, or with another name..."God of Sunlight
+      and Agricultural". Every human loved Arva. Conversely, Arva has a brother called;
+      "Nokru" known for their dark sorcerey and curses.'
     mirror: 0
     backGround: {fileID: 0}
     eventSpawn: {fileID: 0}
     effect: 
-  - name: 
-    lines: 
+  - name: SIea
+    lines: Of course, human faith is never equal, Arva recieved blessings and worshippings,
+      while in Nokru's name was cursed and seen as the harbinger of disasters.
+    mirror: 0
+    backGround: {fileID: 2800000, guid: 54eba7abb21282c4ab277ab1d5402d0b, type: 3}
+    eventSpawn: {fileID: 0}
+    effect: 
+  - name: SIea
+    lines: Nokru's jealousy eventually boiled over his brother, leading to infleunce
+      his own follower to despise the opposing side.
     mirror: 0
     backGround: {fileID: 0}
     eventSpawn: {fileID: 0}
     effect: 
-  - name: 
-    lines: 
+  - name: SIea
+    lines: My name is Siea, sole child of the chieftain who leads those who follow
+      Lord Nokru. Brave, pure, and divine. Lord Nokru has granted me the gift of
+      sorcerey. My reverence for him runs as deep as the love for my mother and father.
+    mirror: 0
+    backGround: {fileID: 2800000, guid: 5fa799b46c124b8428c059c812d1f1d3, type: 3}
+    eventSpawn: {fileID: 0}
+    effect: 
+  - name: SIea
+    lines: A black tatto is mandatory to have at the back of every Lord Nokru's followers'
+      palm. We raised our hand and show our tattoo, as a gesture of greeting.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    effect: 
+  - name: SIea
+    lines: Before I was born into the family, the tribe of Arva's followers invaded
+      our settlement. They massacred the people with no remorse. And it made me furious.
+      I hate them, as spiteful as Lord Nokru.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    effect: 
+  - name: SIea
+    lines: I am now 18 years of age, serving as the village's with apprentice sorcerer.
+      I was sent out from my village to hone my skill. But when I returned....
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    effect: 
+  - name: SIea
+    lines: My village was desolated of its own people. There was a blood-stained
+      note saying to go hide in the woods.
+    mirror: 0
+    backGround: {fileID: 2800000, guid: 6518ffefd5211124bae6640537a46b5b, type: 3}
+    eventSpawn: {fileID: 0}
+    effect: 
+  - name: SIea
+    lines: Maybe... my parents could be hiding in there too, but my guts are telling
+      the opposite.. Please, don't let anything happen to them...
     mirror: 0
     backGround: {fileID: 0}
     eventSpawn: {fileID: 0}
