@@ -8,21 +8,19 @@ using System.Runtime.InteropServices;
 namespace StarterAssets
 {
     [System.Serializable]
-    [CreateAssetMenu(fileName = "New Hitbox", menuName = "Hitbox")]
-    public class HitboxList : ScriptableObject
+    public class HitboxList
     {
         public GameObject hitbox;
         public Vector3 hitboxSpace;
         public bool permenant;
         public int damage;
-        
+
         public int knockBack;
         public bool skipTurn;
         public bool lockTarget;
     }
     [System.Serializable]
-    [CreateAssetMenu(fileName = "New Ability", menuName = "Ability")]
-    public class AbilityMove : ScriptableObject
+    public class AbilityMove
     {
         public string moveName;
         public float distance;
@@ -56,6 +54,7 @@ namespace StarterAssets
         private void Start()
         {
             _health = _maxHealth;
+            _action = _maxAction;
 
             _controllerHandler = GetComponent<ControllerHandler>();
         }
@@ -75,10 +74,6 @@ namespace StarterAssets
                 }
             }
             FlipRigSprite();
-        }
-        private void LateUpdate() {
-            _currentClipName = _controllerHandler._animator.GetCurrentAnimatorStateInfo(0).shortNameHash;
-
         }
         private void FlipRigSprite()
         {

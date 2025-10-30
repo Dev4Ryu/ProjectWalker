@@ -10,6 +10,8 @@ namespace StarterAssets
         [Header("CombatManager")]
         [Tooltip("comabt properties and turn base queue")]
         public static TurnBaseManager turnBaseData;
+        public int level;
+        public AudioSource bgm;
         public PlayerController player;
         public List<ControllerHandler> charQueue = new List<ControllerHandler>();
         public DialogueBox dialogue;
@@ -63,10 +65,12 @@ namespace StarterAssets
             else if (dialogue._popUp == true)
             {
                 player.enabled = false;
+                bgm.enabled = false;
             }
             else if (charQueue.Count == 1)
             {
                 player.enabled = true;
+                bgm.enabled = true;
                 queue = 0;
             }
             CameraZooming();
@@ -89,14 +93,12 @@ namespace StarterAssets
                 if (charQueue[i].enabled)
                 {
                     combatTurnBase = charQueue[i].GetComponent<CombatHandler>();
-
                     float distance = Vector3.Distance(charQueue[i].transform.position, originDistance);
                     float walkCost = (distance / 10) * combatTurnBase._maxAction;//walking cost ap decrease
 
                     combatTurnBase._action = (int)((int)combatTurnBase._maxAction - walkCost) + 1;//calculation of walking
                     if (walkCost >= combatTurnBase._maxAction)
                     {
-                        print("bc walkCost");
                         if (player.enabled == true)
                         {
                             combatTurnBase.ApplyImpluse(-combatTurnBase._speedMove);

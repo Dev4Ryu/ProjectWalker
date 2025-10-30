@@ -1,0 +1,170 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5498254679594443945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6541136890077414752}
+  - component: {fileID: 8747316835894311864}
+  - component: {fileID: 5271105205259553152}
+  m_Layer: 0
+  m_Name: Encounter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6541136890077414752
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498254679594443945}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4, z: -5}
+  m_LocalScale: {x: 6.06, y: 10.085, z: 39.008915}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8747316835894311864
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498254679594443945}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5271105205259553152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498254679594443945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c962433d0afc61d4393255650f4c3186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialougeRoute:
+  - name: Siea
+    lines: '"Excuse me.. are you one of the villagers from my village? I-If so, could
+      you tell me where the rest of you are?"'
+    mirror: 0
+    backGround: {fileID: 2800000, guid: f42f96eed94243748aced1cda39646f4, type: 3}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 8300000, guid: 923024f7f2c36f84e939ca76d9e53762, type: 3}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: I approached the dark figure, hoping for a respond. But with each steps
+      I took, a stench of raw meat filled my nostrils.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"Excuse me.. are you one of the villagers from my village? I-If so, could
+      you tell me where the rest of you are?"'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '!!!!!'
+    mirror: 0
+    backGround: {fileID: 2800000, guid: ff24fb8d619375e4fad020aa01654f7e, type: 3}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 8300000, guid: a84f8a5c1e05e3e4ebd67549bb072a80, type: 3}
+    sfx: {fileID: 8300000, guid: 44cecf583129e0149a630c24d4c03ac3, type: 3}
+    effect: JumpscareEffect
+  - name: Siea
+    lines: I was frozen down to my feet. It was no human.. and it's eating human
+      flesh. Its eyes were awfully soulless with its pale body and razor sharp nails.
+      Its hair damped down its back abnormally long.
+    mirror: 0
+    backGround: {fileID: 2800000, guid: 01e06218377b56c439b85c6e9ec8c080, type: 3}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"Grrh.. grrah..."'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: Without any warning, it prowled right at me with no hesitation. Its explosive
+      power was almost equivalent to one full adult male. Its hand grasped onto my
+      wrist, holding tightly. Its grip power is immense it lifted up my sleeve.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: A tattoo for Lord Arva is exposed on my right arm. This was not the turn
+      of event I anticipated to witness; my mother would always tell me to cover
+      it up, or else something despicable will happen to me, abandonment was also
+      not out of the question. Even if I was both a worhsipper for Lord Arva and
+      Lord Nokru.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"A-Ahh!! Stop!!"'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: The fear of having the tattoo revealed overwhelmed any other emotions.
+      My mind was running wild.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: I managed to pull my mind back and kicked the monster right in its stomach,
+      causing it to let me go
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 

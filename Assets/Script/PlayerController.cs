@@ -137,18 +137,17 @@ namespace StarterAssets
                 RaycastHit hit;
                 Plane groundPlane = new Plane(Vector3.up, transform.position);
 
+                if (Physics.Raycast(mouseRay, out hit,1000,~3))
+                {
+                    ControllerHandler character = hit.collider.GetComponent<ControllerHandler>();
+                    if (!_input.attack) return;
 
-                if (Physics.Raycast(mouseRay, out hit, 60, LayerMask.GetMask("Character")))
-                {
-                    if (_input.attack) TurnBaseManager.turnBaseData.charSelect = hit.collider.GetComponent<ControllerHandler>();
-                    { }
-                }
-                if (Physics.Raycast(mouseRay, out hit))
-                {
-                    if (_input.attack && hit.collider.CompareTag("Totem"))
+                    if (hit.collider.CompareTag("Totem"))
                     {
-                        
+                        print("pray");
                     }
+                    TurnBaseManager.turnBaseData.charSelect = character;
+                    
                 }
             }
         }
@@ -164,6 +163,10 @@ namespace StarterAssets
                     _combat.ChangeAnimation(_combat.AbilityMove[_move].moveName);
                 }
             }
+        }
+        public void DiedScene()
+        {
+            LoadingScene.Instance.LoadLevelBtn("Death");
         }
     }
 }

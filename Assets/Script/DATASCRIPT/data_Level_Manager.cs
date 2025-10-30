@@ -42,6 +42,7 @@ namespace StarterAssets
                 blockPath.transform.position = new Vector3(
                     blockPath.transform.position.x + gapPath, 0, 0);
             }
+            TurnBaseManager.turnBaseData.level = level;
         }
 
         private void GeneratePath()

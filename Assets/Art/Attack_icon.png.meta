@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,117 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Attack_Dagger
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 328
+        width: 128
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d20c37e542e170e45aa35ad7d634671a
+      internalID: -350852271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Spike
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 325
+        width: 182
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e94494f857ca774cbba3eb347b608ef
+      internalID: 1982535264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Dizzy
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 214
+        width: 120
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 307b21f0b1efd6f45ae3437db3aa6aa3
+      internalID: -1971490898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Debuff
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 199
+        width: 104
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63a35e6f965ac294da7dbfd4aa24a2bc
+      internalID: -1772083292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Nails
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 10
+        width: 154
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62568df824e39f347a8bef9a93ffbd7e
+      internalID: 486596582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -122,7 +232,20 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Attack_Dagger: -350852271
+      Attack_Debuff: -1772083292
+      Attack_Dizzy: -1971490898
+      Attack_Nails: 486596582
+      Attack_Spike: 1982535264
+      Attack_icon_0: -955713364
+      Attack_icon_10: -1482206391
+      Attack_icon_11: -632598667
+      Attack_icon_5: -543567793
+      Attack_icon_6: -1339730197
+      Attack_icon_7: 1353386606
+      Attack_icon_8: -1784909050
+      Attack_icon_9: -199585646
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

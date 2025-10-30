@@ -8,12 +8,6 @@ namespace StarterAssets{
     public class DialogueBox : MonoBehaviour
     {
         [System.Serializable]
-        [CreateAssetMenu(fileName = "New Dialogue", menuName = "Dialogue")]
-        public class DialogueRoute : ScriptableObject
-        {
-            public DialogueLines[] dialogueLines;
-        }
-        [System.Serializable]
         public class DialogueLines
         {
             public string name;
@@ -21,14 +15,16 @@ namespace StarterAssets{
             public bool mirror;
             public Texture backGround;
             public GameObject eventSpawn;
+            public AudioClip music;
+            public AudioClip sfx;
             public string effect;
 
         }
         private Animator cutSceneAnimator;
         public RawImage backGround;
-        public AudioSource bgm;
+        public AudioSource musicManager;
+        public AudioSource sfxManager;
         public DialogueLines[] dialogueLines;
-        public DialogueRoute startDialogueRoute;
         public TextMeshProUGUI textComponent;
         public TextMeshProUGUI nameComponent;
         public float textSpeed;
@@ -38,39 +34,58 @@ namespace StarterAssets{
         public GameObject target2;
         public float smoothPopup = 0.125f;
         public bool _popUp;
-        private int lineCount;
+        public int lineCount;
         private bool skip;
         void Start()
         {
             cutSceneAnimator = GetComponent<Animator>();
-            bgm = GetComponent<AudioSource>();
             textComponent.text = string.Empty;
             textBox.transform.position = target2.transform.position;
-            if (startDialogueRoute != null)
-            {
-                dialogueLines = startDialogueRoute.dialogueLines;
-                
-            }
         }
 
         void Update()
         {
-            if (!_popUp && lineCount == 0)
+            if (dialogueLines[0].lines != "")
             {
-                StartDialogue();
-                PlayEffect("PopUp");
+                if (!_popUp && lineCount == 0)
+                {
+                    StartDialogue();
+                    PlayEffect("PopUp");
+                }
+                PopUp();
+                if (dialogueLines[lineCount].mirror)
+                {
+                    nameComponent.alignment = TextAlignmentOptions.Right;
+                }
+                else
+                {
+                    nameComponent.alignment = TextAlignmentOptions.Left;
+                }
+                nameComponent.text = dialogueLines[lineCount].name;
             }
-            PopUp();
-            if (dialogueLines[lineCount].mirror) {
-                nameComponent.alignment = TextAlignmentOptions.Right;
-            } else {
-                nameComponent.alignment = TextAlignmentOptions.Left;
-            }
-            nameComponent.text = dialogueLines[lineCount].name;
+            musicManager.enabled = _popUp ? true : false;
+            sfxManager.enabled = _popUp ? true : false;
         }
-        void StartDialogue(){
+        void StartDialogue()
+        {
             StartCoroutine(TypeLine());
+            EventManager();
             _popUp = true;
+        }
+        void EventManager()
+        {
+            if (dialogueLines[lineCount].music != null)
+                ChangeSound(musicManager, dialogueLines[lineCount].music);
+            if (dialogueLines[lineCount].sfx != null)
+                ChangeSound(sfxManager, dialogueLines[lineCount].sfx);
+            if (dialogueLines[lineCount].effect != "")
+            {
+                PlayEffect(dialogueLines[lineCount].effect);
+            }
+            else if(dialogueLines[lineCount].backGround != null)
+            {
+                PlayEffect("NextLine");
+            }
         }
         IEnumerator TypeLine(){
             foreach (char c in dialogueLines[lineCount].lines.ToCharArray())
@@ -87,14 +102,7 @@ namespace StarterAssets{
                 lineCount++;
                 textComponent.text = string.Empty;
                 StartCoroutine(TypeLine());
-                if (dialogueLines[lineCount].effect != "")
-                {
-                    PlayEffect(dialogueLines[lineCount].effect);
-                }
-                else if(dialogueLines[lineCount].backGround != null)
-                {
-                    PlayEffect("NextLine");
-                }
+                EventManager();
             }else{
                 _popUp = false;
                 PlayEffect("PopDown");
@@ -106,9 +114,10 @@ namespace StarterAssets{
             Vector3 smoothedPosition = Vector3.Lerp(textBox.transform.position, target, smoothPopup);
             textBox.transform.position = smoothedPosition;
         }
-        public void ChangeBGM(AudioSource audio)
+        public void ChangeSound(AudioSource audioSource,AudioClip audio)
         {
-            bgm = audio;
+            audioSource.clip = audio;
+            audioSource.Play();
         }
         public void PlayEffect(string effect)
         {
@@ -123,6 +132,11 @@ namespace StarterAssets{
                 backGround.texture = dialogueLines[lineCount].backGround;
             }
         }
+        public void NewDialouge(DialogueEncounter newDialogue)
+        {
+            dialogueLines = newDialogue.dialougeRoute;
+            lineCount = 0;
+        }
         IEnumerator Skip()
         {
             skip = false;
@@ -132,5 +146,6 @@ namespace StarterAssets{
             yield return new WaitForSeconds(stateInfo.length);
             skip = true;
         }
+        
     }
 }

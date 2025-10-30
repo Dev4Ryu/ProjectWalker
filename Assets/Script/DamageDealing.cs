@@ -43,7 +43,6 @@ namespace StarterAssets
             if (_targetData != null && _targetData.transform.tag != _ownerTag)
             {
                 if (_haveOwner) {
-                    _combat.ApplyImpluse(_combat._impluse * 0);
                     Vector3 enemy = new Vector3(other.transform.position.x, 0f, other.transform.position.z);
                     Quaternion rotation = Quaternion.LookRotation(-transform.parent.forward);
                     other.transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 2);   

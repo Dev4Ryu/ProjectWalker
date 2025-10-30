@@ -1,0 +1,363 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5498254679594443945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6541136890077414752}
+  - component: {fileID: 8747316835894311864}
+  - component: {fileID: 5271105205259553152}
+  m_Layer: 0
+  m_Name: TwinkEncounter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6541136890077414752
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498254679594443945}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4, z: -5}
+  m_LocalScale: {x: 6.06, y: 10.085, z: 39.008915}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8747316835894311864
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498254679594443945}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5271105205259553152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498254679594443945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c962433d0afc61d4393255650f4c3186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialougeRoute:
+  - name: Siea
+    lines: "There's something moving on the pile of snow... I tried to differentiate
+      the white fabric from the white snow\u2014there's someone in the pile."
+    mirror: 0
+    backGround: {fileID: 2800000, guid: 9840b952ee9ebb64ba30561240b61235, type: 3}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: ???
+    lines: '"H..Help me.."'
+    mirror: 1
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: I took a step back apon hearing the voice of a human.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: ???
+    lines: '"Please.. I''m dying.. Help me.."'
+    mirror: 1
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: "Their voice sound pitiful.. wet, and in plead of help\u2014like a slug
+      pleading for its life to be spared. I may not be cruel, neither am I a fool."
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: I used my foot to poke them, checking whether they are dangerous or not.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: I used my foot to poke them, checking whether they are dangerous or not.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: They didn't fight back, so I extended my hand out to lift them up.
+    mirror: 0
+    backGround: {fileID: 2800000, guid: 9f2f7abc8ad94164b9363f2dc9126f2b, type: 3}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: ???
+    lines: '"Ah.. thank you. Bless your kind soul.."'
+    mirror: 1
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: Cloudy white hair as ice flakes, glowing yellow-amber eyes. Lashes long
+      and feminine. Such beauty right in front me unable to discern whether I witnessed
+      a man or a woman.
+    mirror: 0
+    backGround: {fileID: 2800000, guid: dd5eeea8d4f2a1c48b99197e27055e0a, type: 3}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: But judging from how they're dressed, that is a man, same age as me.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: He noticed my long glance at him. It made his pale cheeks shine a soft
+      pink under the snow.
+    mirror: 0
+    backGround: {fileID: 2800000, guid: f73a672a260cbd641b2dbe5570996b32, type: 3}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: ???
+    lines: '"Why are.. you staring at me like that?"'
+    mirror: 1
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"Nothin''"'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: Wait a second, I don't recognize that clothing. If he's from another god
+      worshipping tribe, I'm screwed. It'll also sound weird if I ask about it.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"How''d you get here? And why were you passed out in the snow?"'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: ???
+    lines: "\"Oh m-me? I lost my footing and fell behind the tribe I was with. I
+      saw this one scary monster come out of nowhere\u2014I ran until I couldn't
+      breathe anymore.\""
+    mirror: 1
+    backGround: {fileID: 2800000, guid: 3023e1fa3576faa448706ddb24e1e3fc, type: 3}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"I see, then.."'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: His answer sounded too earnest. I glanced at his clothing. They don't
+      have any resemblences close to the Nokru-worshipping tribe, the fabric's too
+      neat.. and it's pure white.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"Show me your hand! Who do you worhsip?!"'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: ???
+    lines: '"I don''t-"'
+    mirror: 1
+    backGround: {fileID: 2800000, guid: 9f2f7abc8ad94164b9363f2dc9126f2b, type: 3}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: Without slowing down, I grabbed onto his wrist and lifted it up.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: "My blood ran cold apon seeing a glowing golden mark etched into his right
+      hand\u2014Arva's symbol, the God of Light. The exact same mark on my arm."
+    mirror: 0
+    backGround: {fileID: 2800000, guid: 5a133829bf770014c9dfae8b4b8eef6b, type: 3}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"An Outsider.."'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"You people.. are the sole reason this planet crumbled!!"'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: He didn't flinch or blink; he only stared at me.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: ???
+    lines: '"I''m sorry if being what I am troubled you in some way."'
+    mirror: 1
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"Don''t get your tone all soft! Your people burned down and massacred
+      my people!"'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: ???
+    lines: '"But you helped me."'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: His words struck my chest in some way. I bit down hard, my hand finding
+      the knife at my waist, gripping the hilt hard enough to see my knuckles turning
+      white.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"I just don''t want my hands to be stained with blood..."'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: ???
+    lines: '"Then what are you going to do next, Siea?"'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: SIea
+    lines: '"Ho.. How''d you know my name??"'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: ???
+    lines: '"I can hear them.. whispering in the snow for a while now."'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: SIea
+    lines: '"What are you talking about..?"'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
