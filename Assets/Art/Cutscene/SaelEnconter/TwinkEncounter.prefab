@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5498254679594443945}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: -5}
+  m_LocalPosition: {x: 0, y: 4, z: -7}
   m_LocalScale: {x: 6.06, y: 10.085, z: 39.008915}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -73,7 +73,7 @@ MonoBehaviour:
     mirror: 0
     backGround: {fileID: 2800000, guid: 9840b952ee9ebb64ba30561240b61235, type: 3}
     eventSpawn: {fileID: 0}
-    music: {fileID: 0}
+    music: {fileID: 8300000, guid: c06377504251e3f4e8431ff8460f9dbf, type: 3}
     sfx: {fileID: 0}
     effect: 
   - name: ???
@@ -148,7 +148,7 @@ MonoBehaviour:
     mirror: 0
     backGround: {fileID: 2800000, guid: dd5eeea8d4f2a1c48b99197e27055e0a, type: 3}
     eventSpawn: {fileID: 0}
-    music: {fileID: 0}
+    music: {fileID: 8300000, guid: 8266f63fe9440b14dbfc6a456d20e85a, type: 3}
     sfx: {fileID: 0}
     effect: 
   - name: Siea
@@ -232,15 +232,15 @@ MonoBehaviour:
   - name: Siea
     lines: '"Show me your hand! Who do you worhsip?!"'
     mirror: 0
-    backGround: {fileID: 0}
+    backGround: {fileID: 2800000, guid: 9f2f7abc8ad94164b9363f2dc9126f2b, type: 3}
     eventSpawn: {fileID: 0}
-    music: {fileID: 0}
+    music: {fileID: 8300000, guid: c06377504251e3f4e8431ff8460f9dbf, type: 3}
     sfx: {fileID: 0}
     effect: 
   - name: ???
     lines: '"I don''t-"'
     mirror: 1
-    backGround: {fileID: 2800000, guid: 9f2f7abc8ad94164b9363f2dc9126f2b, type: 3}
+    backGround: {fileID: 0}
     eventSpawn: {fileID: 0}
     music: {fileID: 0}
     sfx: {fileID: 0}
@@ -259,7 +259,7 @@ MonoBehaviour:
     mirror: 0
     backGround: {fileID: 2800000, guid: 5a133829bf770014c9dfae8b4b8eef6b, type: 3}
     eventSpawn: {fileID: 0}
-    music: {fileID: 0}
+    music: {fileID: 8300000, guid: 2f04f8721a82e6a40869b5ac262da9cd, type: 3}
     sfx: {fileID: 0}
     effect: 
   - name: Siea
@@ -352,7 +352,7 @@ MonoBehaviour:
     eventSpawn: {fileID: 0}
     music: {fileID: 0}
     sfx: {fileID: 0}
-    effect: 
+    effect: ChoiceMade
   - name: SIea
     lines: '"What are you talking about..?"'
     mirror: 0
@@ -361,3 +361,4 @@ MonoBehaviour:
     music: {fileID: 0}
     sfx: {fileID: 0}
     effect: 
+  dialougeGoodEnd: []

@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 3977546322155802841}
   - component: {fileID: 4122704663440526586}
   - component: {fileID: 5552653113984514358}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ForeBlackGraident
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -57,6 +57,8 @@ namespace StarterAssets
             {
                 _target = null;
                 TurnBaseManager.turnBaseData.charQueue.Remove(this);
+                TurnBaseManager.turnBaseData.queue++;
+                TurnBaseManager.turnBaseData.savedOriginal = true;
             }
             if (_target != null)
             {

@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5498254679594443945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6541136890077414752}
+  - component: {fileID: 8747316835894311864}
+  - component: {fileID: 5271105205259553152}
+  m_Layer: 0
+  m_Name: TwinkBad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6541136890077414752
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498254679594443945}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4, z: -7}
+  m_LocalScale: {x: 6.06, y: 10.085, z: 39.008915}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8747316835894311864
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498254679594443945}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5271105205259553152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498254679594443945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c962433d0afc61d4393255650f4c3186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialougeRoute:
+  - name: Siea
+    lines: Without hesitation, my blade drifted through the snow. The sound of my
+      blade tearing into the flesh of the very person in front of me.
+    mirror: 0
+    backGround: {fileID: 2800000, guid: fba1c883862aaaf49b36fe295f3fc9bd, type: 3}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 8300000, guid: c06377504251e3f4e8431ff8460f9dbf, type: 3}
+    sfx: {fileID: 0}
+    effect: NextLine
+  - name: 
+    lines: His blood fell in crimson drops onto the snowy ground. He started choking,
+      before curling a small, pained grin and trembling in the cold
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: ???
+    lines: '"You.. are so.. brave. But that''s not enough to kill me, Siea."'
+    mirror: 1
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: I took a step back, my breathing heaved and eyes flared. His body dissolved
+      into flakes of ice, floating through the air, leaving the small puddle of his
+      blood in the snow.
+    mirror: 0
+    backGround: {fileID: 2800000, guid: e3988d49bceeb5c449fa81221cfe1e8e, type: 3}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  dialougeGoodEnd: []

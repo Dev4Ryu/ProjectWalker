@@ -9,13 +9,12 @@ namespace StarterAssets
         public bool _haveOwner = true;
         
         private CombatHandler _combat;
-        private string _ownerTag;
+        protected string _ownerTag;
 
         public float _breakImpluse;
         public int _damage;
         public int _knockBack;
-        public bool _permenant; 
-        public bool _skipTurn;
+        public bool _permenant;
 
         private float _timer = 0.3f;
         public float _projectileSpeed;
@@ -26,7 +25,7 @@ namespace StarterAssets
                 _combat = transform.parent.GetComponent<CombatHandler>();
             }
         }
-        private void Update()
+        public void Update()
         {
             _timer -= 1 * Time.deltaTime;
             if (_timer <= 0 && !_permenant)
@@ -38,7 +37,7 @@ namespace StarterAssets
                 transform.position += (transform.forward * _projectileSpeed) * Time.deltaTime;
             }
         }
-        private void OnTriggerEnter (Collider other){
+        virtual public void OnTriggerEnter (Collider other){
             CombatHandler _targetData = other.GetComponent<CombatHandler>();
             if (_targetData != null && _targetData.transform.tag != _ownerTag)
             {

@@ -319,7 +319,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6322576392244977842}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -397,31 +397,35 @@ MonoBehaviour:
     permenant: 0
     damage: 20
     knockBack: -25
-    stunt: 1
+    skipTurn: 0
     lockTarget: 1
   AbilityMove:
   - moveName: BaseAttack
-    distance: 0
+    distance: 4
     moveDescription: 
     actionCost: 0
   - moveName: Freeze
     distance: 0
     moveDescription: 
     actionCost: 0
-  - moveName: 
-    distance: 0
+  - moveName: NailVomit
+    distance: 8
     moveDescription: 
     actionCost: 0
-  - moveName: 
-    distance: 0
+  - moveName: Spike
+    distance: 14
+    moveDescription: 
+    actionCost: 0
+  - moveName: LowerArm
+    distance: 10
     moveDescription: 
     actionCost: 0
   _maxHealth: 445
   _health: 0
-  _maxAction: 10
+  _maxAction: 6
   _action: 0
   _baseDamage: 10
-  _speedMove: 5
+  _speedMove: 20
   _canBeDestroy: 1
   _resetIfDie: 1
   _flip: 0
@@ -891,11 +895,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: e21fde385a7272c4ea8361a79c3ac9e8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9659258
+      value: 0.9659273
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: e21fde385a7272c4ea8361a79c3ac9e8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.2588191
+      value: 0.25881353
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: e21fde385a7272c4ea8361a79c3ac9e8, type: 3}
       propertyPath: m_LocalRotation.y

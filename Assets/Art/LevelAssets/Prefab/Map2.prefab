@@ -375,8 +375,8 @@ GameObject:
   - component: {fileID: 3977546322155802841}
   - component: {fileID: 4122704663440526586}
   - component: {fileID: 5552653113984514358}
-  m_Layer: 0
-  m_Name: Black_gradient_1 (1)
+  m_Layer: 3
+  m_Name: ForeBlackGraident
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1889,14 +1889,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2811779394694028927}
     m_Modifications:
-    - target: {fileID: 516200647462739172, guid: f3104f68e2ec5de4391c52bc5d9d8994, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9659273
-      objectReference: {fileID: 0}
-    - target: {fileID: 516200647462739172, guid: f3104f68e2ec5de4391c52bc5d9d8994, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.25881353
-      objectReference: {fileID: 0}
     - target: {fileID: 4461381163766042447, guid: 5049d2c3175603a4c92bf4054f18ad45, type: 3}
       propertyPath: m_Name
       value: SpawnChance
@@ -1940,6 +1932,14 @@ PrefabInstance:
     - target: {fileID: 7541438943447474952, guid: 5049d2c3175603a4c92bf4054f18ad45, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 516200647462739172, guid: f3104f68e2ec5de4391c52bc5d9d8994, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9659273
+      objectReference: {fileID: 0}
+    - target: {fileID: 516200647462739172, guid: f3104f68e2ec5de4391c52bc5d9d8994, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.25881353
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

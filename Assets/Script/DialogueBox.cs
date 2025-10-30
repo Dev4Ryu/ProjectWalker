@@ -36,6 +36,8 @@ namespace StarterAssets{
         public bool _popUp;
         public int lineCount;
         private bool skip;
+        [Header("Story")]
+        public bool goodEnding;
         void Start()
         {
             cutSceneAnimator = GetComponent<Animator>();
@@ -69,22 +71,33 @@ namespace StarterAssets{
         void StartDialogue()
         {
             StartCoroutine(TypeLine());
-            EventManager();
             _popUp = true;
+            sfxManager.enabled = true;
+            sfxManager.clip = null;
+            EventManager();
+            TurnBaseManager.turnBaseData.bgm.enabled = false;
         }
         void EventManager()
         {
-            if (dialogueLines[lineCount].music != null)
-                ChangeSound(musicManager, dialogueLines[lineCount].music);
-            if (dialogueLines[lineCount].sfx != null)
-                ChangeSound(sfxManager, dialogueLines[lineCount].sfx);
             if (dialogueLines[lineCount].effect != "")
             {
                 PlayEffect(dialogueLines[lineCount].effect);
             }
-            else if(dialogueLines[lineCount].backGround != null)
+            if (dialogueLines[lineCount].music != null)
+                ChangeSound(musicManager, dialogueLines[lineCount].music);
+            if (dialogueLines[lineCount].sfx != null)
+                ChangeSound(sfxManager, dialogueLines[lineCount].sfx);
+            else if (dialogueLines[lineCount].backGround != null)
             {
                 PlayEffect("NextLine");
+            }
+            else if (lineCount == 0)
+            {
+                PlayEffect("PopUp");
+            }
+            if (dialogueLines[lineCount].eventSpawn != null)
+            {
+                Instantiate(dialogueLines[lineCount].eventSpawn);
             }
         }
         IEnumerator TypeLine(){
@@ -106,6 +119,7 @@ namespace StarterAssets{
             }else{
                 _popUp = false;
                 PlayEffect("PopDown");
+                TurnBaseManager.turnBaseData.bgm.enabled = true;
             }
         }
         void PopUp()
@@ -134,6 +148,7 @@ namespace StarterAssets{
         }
         public void NewDialouge(DialogueEncounter newDialogue)
         {
+            _popUp = false;
             dialogueLines = newDialogue.dialougeRoute;
             lineCount = 0;
         }
@@ -145,6 +160,10 @@ namespace StarterAssets{
 
             yield return new WaitForSeconds(stateInfo.length);
             skip = true;
+        }
+        public void endingRoute(bool good)
+        {
+            goodEnding = good;
         }
         
     }

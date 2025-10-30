@@ -7,23 +7,17 @@ namespace StarterAssets
     public class DialogueEncounter : MonoBehaviour
     {
         public DialogueBox.DialogueLines[] dialougeRoute;
+        public DialogueBox.DialogueLines[] dialougeGoodEnd;
         private void OnTriggerEnter(Collider other)
         {
+            if(TurnBaseManager.turnBaseData.dialogue.goodEnding)  dialougeRoute = dialougeGoodEnd;
             PlayerController _targetData = other.GetComponent<PlayerController>();
             if (_targetData != null)
             {
-                TurnBaseManager.turnBaseData.dialogue.dialogueLines = dialougeRoute;
                 TurnBaseManager.turnBaseData.dialogue.lineCount = 0;
+                TurnBaseManager.turnBaseData.dialogue.dialogueLines = dialougeRoute;
                 Destroy(gameObject);
             }
-        }
-    }
-    public class DialogueEnding : DialogueEncounter
-    {
-        public DialogueBox.DialogueLines[] dialougeGoodEnd;
-        void Update()
-        {
-            if(TurnBaseManager.turnBaseData.goodEnding)  dialougeRoute = dialougeGoodEnd;
         }
     }
 }

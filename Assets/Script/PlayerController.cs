@@ -25,6 +25,7 @@ namespace StarterAssets
         // player
 
         public float checkAnimation;
+        public DialogueEncounter deadDialogue;
 
         private bool IsCurrentDeviceMouse
         {
@@ -137,16 +138,25 @@ namespace StarterAssets
                 RaycastHit hit;
                 Plane groundPlane = new Plane(Vector3.up, transform.position);
 
-                if (Physics.Raycast(mouseRay, out hit,1000,~3))
+                if (Physics.Raycast(mouseRay, out hit,Mathf.Infinity,~((1 << LayerMask.NameToLayer("Environment")))))
                 {
                     ControllerHandler character = hit.collider.GetComponent<ControllerHandler>();
+                    Debug.Log("Hit: " + hit.collider.name);
                     if (!_input.attack) return;
 
                     if (hit.collider.CompareTag("Totem"))
                     {
                         print("pray");
                     }
-                    TurnBaseManager.turnBaseData.charSelect = character;
+                    if (hit.collider.CompareTag("Player"))
+                    {
+                        
+                    }
+                    else
+                    {
+                    
+                        TurnBaseManager.turnBaseData.charSelect = character;
+                    }
                     
                 }
             }

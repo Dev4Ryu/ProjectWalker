@@ -16,8 +16,8 @@ namespace StarterAssets
         public int damage;
 
         public int knockBack;
-        public bool skipTurn;
         public bool lockTarget;
+        public bool onlySpawn;
     }
     [System.Serializable]
     public class AbilityMove
@@ -133,11 +133,11 @@ namespace StarterAssets
             {
                 Hitbox.transform.position = TurnBaseManager.turnBaseData.charSelect.transform.position;
             }
-            
+
             DamageDealing hitboxCom = Hitbox.GetComponent<DamageDealing>();
+            if (HitboxList[hitboxNum].onlySpawn) return;
             hitboxCom._permenant = HitboxList[hitboxNum].permenant;
             hitboxCom._damage = HitboxList[hitboxNum].damage;
-            hitboxCom._skipTurn = HitboxList[hitboxNum].skipTurn;
             hitboxCom._knockBack = HitboxList[hitboxNum].knockBack;
         }
         public void ApplyImpluse(float _applyImpluse)

@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 3977546322155802841}
   - component: {fileID: 4122704663440526586}
   - component: {fileID: 5552653113984514358}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ForeBlackGraident
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5258,6 +5258,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2811779394694028927}
     m_Modifications:
+    - target: {fileID: 4461381163766042447, guid: 5049d2c3175603a4c92bf4054f18ad45, type: 3}
+      propertyPath: m_Name
+      value: SpawnChanceMap
+      objectReference: {fileID: 0}
+    - target: {fileID: 4461381163766042447, guid: 5049d2c3175603a4c92bf4054f18ad45, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541438943447474952, guid: 5049d2c3175603a4c92bf4054f18ad45, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9659273
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541438943447474952, guid: 5049d2c3175603a4c92bf4054f18ad45, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.25881353
+      objectReference: {fileID: 0}
     - target: {fileID: 2271071614492598603, guid: 0cf38c976df606244ad37335e57bc4e1, type: 3}
       propertyPath: enemies.Array.size
       value: 2
@@ -5317,22 +5333,6 @@ PrefabInstance:
     - target: {fileID: 8616323226524191433, guid: 0cf38c976df606244ad37335e57bc4e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4461381163766042447, guid: 5049d2c3175603a4c92bf4054f18ad45, type: 3}
-      propertyPath: m_Name
-      value: SpawnChanceMap
-      objectReference: {fileID: 0}
-    - target: {fileID: 4461381163766042447, guid: 5049d2c3175603a4c92bf4054f18ad45, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7541438943447474952, guid: 5049d2c3175603a4c92bf4054f18ad45, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9659273
-      objectReference: {fileID: 0}
-    - target: {fileID: 7541438943447474952, guid: 5049d2c3175603a4c92bf4054f18ad45, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.25881353
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

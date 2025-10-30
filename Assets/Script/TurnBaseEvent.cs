@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using Unity.Cinemachine;
+using System.Runtime.InteropServices;
 
 namespace StarterAssets
 {
@@ -12,11 +13,12 @@ namespace StarterAssets
         public static TurnBaseManager turnBaseData;
         public int level;
         public AudioSource bgm;
+        public AudioClip[] bgmClip;
         public PlayerController player;
         public List<ControllerHandler> charQueue = new List<ControllerHandler>();
         public DialogueBox dialogue;
         public CombatHandler combatTurnBase;
-        public Vector3 originDistance;
+        public Vector3 originPos;
         public bool savedOriginal;
         public bool _turnBaseMode = false;
         public int queue;
@@ -30,8 +32,6 @@ namespace StarterAssets
         public float zoom = 20f;
         private float cameraDistance = 20f;
         public CinemachinePositionComposer cinemachineVirtualCamera;
-        [Header("EndingRoute")]
-        public bool goodEnding;
 
         void Awake()
         {
@@ -58,20 +58,21 @@ namespace StarterAssets
         {
             _turnBaseMode = charQueue.Count > 1 ? true : false;
 
-            if (_turnBaseMode)
-            {
-                TurnHandler();
-            }
-            else if (dialogue._popUp == true)
-            {
-                player.enabled = false;
-                bgm.enabled = false;
-            }
-            else if (charQueue.Count == 1)
+            if (charQueue.Count == 1)
             {
                 player.enabled = true;
                 bgm.enabled = true;
                 queue = 0;
+                if (bgm.clip == bgmClip[0]) return;
+                bgm.clip = bgmClip[0];
+                bgm.Play();
+            }
+            else if (_turnBaseMode)
+            {
+                TurnHandler();
+                if (bgm.clip == bgmClip[1]) return;
+                bgm.clip = bgmClip[1];
+                bgm.Play();
             }
             CameraZooming();
         }
@@ -93,7 +94,7 @@ namespace StarterAssets
                 if (charQueue[i].enabled)
                 {
                     combatTurnBase = charQueue[i].GetComponent<CombatHandler>();
-                    float distance = Vector3.Distance(charQueue[i].transform.position, originDistance);
+                    float distance = Vector3.Distance(charQueue[i].transform.position, originPos);
                     float walkCost = (distance / 10) * combatTurnBase._maxAction;//walking cost ap decrease
 
                     combatTurnBase._action = (int)((int)combatTurnBase._maxAction - walkCost) + 1;//calculation of walking
@@ -101,7 +102,8 @@ namespace StarterAssets
                     {
                         if (player.enabled == true)
                         {
-                            combatTurnBase.ApplyImpluse(-combatTurnBase._speedMove);
+                            Vector3 direction = (originPos - player.transform.position).normalized;
+                            player._controller.Move(direction * combatTurnBase._speedMove * Time.deltaTime);
                         }
                         else
                         {
@@ -140,11 +142,12 @@ namespace StarterAssets
 
             perlin.AmplitudeGain = originalIntensity;
         }
-        public void SaveOrigin(Vector3 originPos)
+        public void SaveOrigin(Vector3 origin)
         {
             if (savedOriginal == true)
-                originDistance = originPos;
+                originPos = origin;
             savedOriginal = false;
+            print(originPos);
         }
         
     }
