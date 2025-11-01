@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
 using System.Runtime.InteropServices;
+using System.Runtime;
 
 namespace StarterAssets
 {
@@ -36,7 +37,6 @@ namespace StarterAssets
 
             AssignAnimationIDs();
 
-            this.transform.parent = null;
             _player = TurnBaseManager.turnBaseData.player;
         }
 
@@ -49,16 +49,8 @@ namespace StarterAssets
                 TurnBaseManager.turnBaseData.charQueue.Add(this);
                 if (TurnBaseManager.turnBaseData.queue == 0)
                 {
-                    TurnBaseManager.turnBaseData.queue++;
-                    TurnBaseManager.turnBaseData.savedOriginal = true;
+                    TurnBaseManager.turnBaseData.NextQueue();
                 }
-            }
-            else if (PlayerRange > visonRange.y && _target != null)
-            {
-                _target = null;
-                TurnBaseManager.turnBaseData.charQueue.Remove(this);
-                TurnBaseManager.turnBaseData.queue++;
-                TurnBaseManager.turnBaseData.savedOriginal = true;
             }
             if (_target != null)
             {
@@ -165,20 +157,29 @@ namespace StarterAssets
             }
         }
 
-        private IEnumerator EnemyAttack()
+        private void EnemyAttack()
         {
             Quaternion rotation = Quaternion.LookRotation(_target.transform.position - transform.position);
             transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 2);
             _combat.ChangeAnimation(_combat.AbilityMove[0].moveName);
-            yield return new WaitForSeconds(0.5f);
         }
 
         private void Attack()
         {
-            if (PlayerRange < 2 && _animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            foreach (AbilityMove ability in _combat.AbilityMove)
             {
-                StartCoroutine(EnemyAttack());
+                if (Vector2.Distance(transform.position, _target.transform.position) < ability.distance)
+                {
+                    if (_combat._action >= ability.actionCost &&
+                    _animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+                        EnemyAttack();
+                }
+                if(Vector2.Distance(transform.position, _target.transform.position) < _thisAgent.stoppingDistance && _animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+                {
+                    TurnBaseManager.turnBaseData.NextQueue();
+                }
             }
+            
         }
         public override void OnDisable()
         {

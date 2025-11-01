@@ -1,3 +1,5 @@
+using System.Net;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +9,7 @@ namespace StarterAssets
     {
         public GameObject targetAction;
         public Image characterAction;
+        public Image playerAction;
 
         public float baseScale = 1f;     // Normal size when close
         public float scaleDistance = 5f; // Distance where scale starts to shrink
@@ -14,7 +17,37 @@ namespace StarterAssets
 
         void Update()
         {
-            if (targetAction == null || characterAction == null)
+            if (TurnBaseManager.turnBaseData.charSelect != null)
+            {
+                targetAction = TurnBaseManager.turnBaseData.charSelect.gameObject;
+
+                if (targetAction.TryGetComponent<PlayerController>(out PlayerController _player))
+                {
+                    LockOnTarget(playerAction);
+
+                    playerAction.gameObject.SetActive(true);
+                    characterAction.gameObject.SetActive(false);
+                    print("player");
+
+                }
+                else if (targetAction.TryGetComponent<AIController>(out AIController _enemy))
+                {
+                    LockOnTarget(characterAction);
+
+                    playerAction.gameObject.SetActive(false);
+                    characterAction.gameObject.SetActive(true);
+                    print("enemy");
+                }
+            }
+            if(!TurnBaseManager.turnBaseData.player.enabled || TurnBaseManager.turnBaseData.charSelect == null)
+            {
+                playerAction.gameObject.SetActive(false);
+                characterAction.gameObject.SetActive(false);
+            }
+        }
+        void LockOnTarget(Image actionMenu)
+        {
+            if (targetAction == null || actionMenu == null)
                 return;
 
             Transform target = FindChildWithTag(targetAction.transform, "CinemachineTarget");
@@ -24,7 +57,7 @@ namespace StarterAssets
             Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
 
             // Move the UI element to that screen position
-            characterAction.transform.position = new Vector3(screenPos.x, screenPos.y, 0);
+            actionMenu.transform.position = new Vector3(screenPos.x, screenPos.y, 0);
 
             // Calculate distance for scaling
             float distance = Vector3.Distance(Camera.main.transform.position, targetAction.transform.position);
@@ -33,23 +66,9 @@ namespace StarterAssets
             float scale = baseScale / (distance / scaleDistance);
             scale = Mathf.Clamp(scale, minScale, baseScale);
 
-            characterAction.rectTransform.localScale = Vector3.one * scale;
+            actionMenu.rectTransform.localScale = Vector3.one * scale;
         }
 
-        void LateUpdate()
-        {
-            if (TurnBaseManager.turnBaseData.charSelect != null)
-            {
-                characterAction.gameObject.SetActive(true);
-                targetAction = TurnBaseManager.turnBaseData.charSelect.gameObject;
-            }
-            else
-            {
-                characterAction.gameObject.SetActive(false);
-            }
-        }
-
-        // ✅ Helper function to find a child (or grandchild) with a specific tag
         Transform FindChildWithTag(Transform parent, string tag)
         {
             foreach (Transform child in parent)

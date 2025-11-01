@@ -7,8 +7,10 @@ public class DestroyOnDIsable : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        transform.parent = null;
+        StartCoroutine(RemoveSprite());
     }
-    IEnumerator Skip()
+    IEnumerator RemoveSprite()
     {
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
         float realLength = stateInfo.length / stateInfo.speed;

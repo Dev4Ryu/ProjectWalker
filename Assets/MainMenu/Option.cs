@@ -64,10 +64,11 @@ public class OptionsMenu : MonoBehaviour
 
     public void SetVolume(float sliderValue)
     {
-        float volumeDb = sliderValue;
+        // Avoid log(0) by clamping to small value
+        float volumeDb = Mathf.Log10(Mathf.Clamp(sliderValue, 0.0001f, 1f)) * 20f;
         audioMixer.SetFloat("MainVolume", volumeDb);
-        Debug.Log("Volume set to: " + volumeDb + " dB");
     }
+
 
     public void SetFullscreen(bool isFullscreen)
     {

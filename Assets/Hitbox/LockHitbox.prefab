@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3076543729820678129}
   - component: {fileID: 8847013678057275075}
   - component: {fileID: 2993199798500103332}
-  - component: {fileID: 8317553891499621948}
+  - component: {fileID: 7391928433247325065}
   m_Layer: 0
-  m_Name: Freezing
+  m_Name: LockHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6601775008869905164}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 47.004196, y: 2.3, z: -11.926172}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 1.5, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6601775008869905164}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -109,7 +109,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8317553891499621948
+--- !u!114 &7391928433247325065
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,13 +118,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6601775008869905164}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78e11ce06e07ff3409f6ee54595f525a, type: 3}
+  m_Script: {fileID: 11500000, guid: 659d8cb164fc4f0469980ae8fc69f15c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _haveOwner: 1
   _breakImpluse: 0
-  _damage: 10
+  _damage: 1
   _knockBack: 0
   _permenant: 0
   _projectileSpeed: 0
-  freezeTime: 3

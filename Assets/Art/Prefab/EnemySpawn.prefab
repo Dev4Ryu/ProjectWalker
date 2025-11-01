@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7541438943447474952}
   - component: {fileID: 53956369758947466}
   m_Layer: 0
-  m_Name: SpawnChance
+  m_Name: EnemySpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,4 +50,4 @@ MonoBehaviour:
     minLevel: 12
   - character: {fileID: 2509002068144105102, guid: c6597e07471b10f46a07b670e67bbac5, type: 3}
     chance: 0.3
-    minLevel: 60
+    minLevel: 35

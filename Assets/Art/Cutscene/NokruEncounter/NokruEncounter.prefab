@@ -74,6 +74,89 @@ MonoBehaviour:
     mirror: 0
     backGround: {fileID: 2800000, guid: 323565353919c684287f850f8295ad66, type: 3}
     eventSpawn: {fileID: 0}
+    music: {fileID: 8300000, guid: c06377504251e3f4e8431ff8460f9dbf, type: 3}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: I've killed dozens of those monsters. They don't faces, voices, or souls.
+      But this one is different...
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: "When I flipped over its rough hand, a symbol etched onto the calloused
+      palm. My first thought\u2014a scar? Or worse, a demon's curse brand?"
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: "The more I stared, the colder I felt\u2014I knew this mark. Not from
+      scholarly texts, nor from bodies of the fallen, but from the palms of my own
+      people. My people."
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"This is.. Lord Nokru''s mark.."'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: "I took a step back, snow crunching underneath my feet. My hands trembling
+      at the sight of my own hands as if they belonged to someone else. Cold or fear\u2014I
+      couldn't tell which made me tremble."
+    mirror: 0
+    backGround: {fileID: 2800000, guid: 1e67c71bd73c545448b21dfbe43883dc, type: 3}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: I looked down at the corspe before thinking to myself.. Are these monsters..
+      them? The people from my tribe?
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: "I shook my head hard\u2014so hard my ears rang. No. This isn't real.
+      I don't believe it. I don't believe ANY of it."
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"They.. are dead.. They are killed.. no.. no no, not like this..!"'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  dialougeGoodEnd:
+  - name: Siea
+    lines: I am exhausted.. my blade almost slipped out of my hand from how exhausted
+      I am. Nevertheless, as long as there is still strength left within me, I'd
+      make sure it is dead.
+    mirror: 0
+    backGround: {fileID: 2800000, guid: 323565353919c684287f850f8295ad66, type: 3}
+    eventSpawn: {fileID: 0}
     music: {fileID: 0}
     sfx: {fileID: 0}
     effect: 
@@ -149,4 +232,4 @@ MonoBehaviour:
     music: {fileID: 0}
     sfx: {fileID: 0}
     effect: 
-  dialougeGoodEnd: []
+  deleteEnd: 0

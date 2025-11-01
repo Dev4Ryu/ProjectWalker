@@ -138,45 +138,63 @@ namespace StarterAssets
                 RaycastHit hit;
                 Plane groundPlane = new Plane(Vector3.up, transform.position);
 
-                if (Physics.Raycast(mouseRay, out hit,Mathf.Infinity,~((1 << LayerMask.NameToLayer("Environment")))))
+                int ignoreMask = (1 << LayerMask.NameToLayer("Environment")) | (1 << LayerMask.NameToLayer("Ignore Raycast"));
+
+
+                if (Physics.Raycast(mouseRay, out hit,Mathf.Infinity,~ignoreMask))
                 {
                     ControllerHandler character = hit.collider.GetComponent<ControllerHandler>();
                     Debug.Log("Hit: " + hit.collider.name);
                     if (!_input.attack) return;
 
-                    if (hit.collider.CompareTag("Totem"))
+                    if (hit.collider.CompareTag("Totem") && Vector3.Distance(hit.transform.position,transform.position) <= 5)
                     {
-                        print("pray");
+                        _animator.CrossFadeInFixedTime("Pray", 0);
+                        _combat._health = _combat._maxHealth;
                     }
                     if (hit.collider.CompareTag("Player"))
                     {
-                        
+                        TurnBaseManager.turnBaseData.charSelect = this;
+                    }
+                    else if (hit.collider.CompareTag("Enemy"))
+                    {
+                        TurnBaseManager.turnBaseData.charSelect = character;
                     }
                     else
                     {
-                    
-                        TurnBaseManager.turnBaseData.charSelect = character;
+                        TurnBaseManager.turnBaseData.charSelect = null;
                     }
-                    
+                    _input.attack = false;
                 }
             }
         }
         public void AnimationPerform(int _move)
         {
-            ControllerHandler charSelect = TurnBaseManager.turnBaseData.charSelect;
-            if (charSelect != null && _animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            foreach (AbilityMove ability in _combat.AbilityMove )
             {
-                if (Vector3.Distance(transform.position, charSelect.transform.position) <= 10)
+                ControllerHandler charSelect = TurnBaseManager.turnBaseData.charSelect;
+                if (_combat._action >= ability.actionCost && Vector2.Distance(charSelect.transform.position, transform.position) < ability.distance &&
+                _animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
                 {
-                    Quaternion rotation = Quaternion.LookRotation(charSelect.transform.position - transform.position);
-                    transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 2);
-                    _combat.ChangeAnimation(_combat.AbilityMove[_move].moveName);
+                    if (charSelect != null)
+                    {
+                        Quaternion rotation = Quaternion.LookRotation(charSelect.transform.position - transform.position);
+                        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 2);
+                        _combat.ChangeAnimation(_combat.AbilityMove[_move].moveName);
+                        TurnBaseManager.turnBaseData.SaveOrigin(transform.position);
+                    }
+                    else
+                    {
+                        TurnBaseManager.turnBaseData.charSelect = null;
+                        break;
+                    }
                 }
             }
         }
         public void DiedScene()
         {
-            LoadingScene.Instance.LoadLevelBtn("Death");
+            TurnBaseManager.turnBaseData.dialogue.dialogueLines = deadDialogue.dialougeRoute;
+            TurnBaseManager.turnBaseData.dialogue.lineCount = 0;
         }
     }
 }

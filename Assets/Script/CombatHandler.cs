@@ -45,29 +45,20 @@ namespace StarterAssets
 
         public int _baseDamage;
         public int _speedMove;
-        
-        public bool _canBeDestroy = true;
-        public bool _resetIfDie = false;
-
         public bool _flip = true;
 
         private void Start()
         {
             _health = _maxHealth;
-            _action = _maxAction;
 
             _controllerHandler = GetComponent<ControllerHandler>();
         }
         private void Update()
         {
+            _action = TurnBaseManager.turnBaseData.currentAction;
             Impluse();
-            if (_health <= 0 && _resetIfDie)
+            if (_health <= 0)
             {
-                SceneManager.LoadScene("SampleScene");
-            }
-            else if (_health <= 0 && _canBeDestroy)
-            {
-                int queue = TurnBaseManager.turnBaseData.queue;
                 if (_controllerHandler._animator.GetCurrentAnimatorStateInfo(0).IsName("Stunt"))
                 {
                     ChangeAnimation("Died");
@@ -131,7 +122,14 @@ namespace StarterAssets
             , transform.rotation, transform);
             if (HitboxList[hitboxNum].lockTarget)
             {
-                Hitbox.transform.position = TurnBaseManager.turnBaseData.charSelect.transform.position;
+                if(TurnBaseManager.turnBaseData.player == enabled)
+                {
+                    Hitbox.transform.position = TurnBaseManager.turnBaseData.charSelect.transform.position;
+                }
+                else
+                {
+                    Hitbox.transform.position = TurnBaseManager.turnBaseData.player.transform.position;
+                }
             }
 
             DamageDealing hitboxCom = Hitbox.GetComponent<DamageDealing>();
@@ -172,15 +170,16 @@ namespace StarterAssets
         {
             TurnBaseManager.turnBaseData.StartCoroutine(TurnBaseManager.turnBaseData.Shake(1f, 0.6f));
         }
-        void OnMouseOver()
+
+        private void OnFootstep(AudioClip audioClip)
         {
-            foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
-                sr.material.EnableKeyword("_EMISSION");
+            AudioSource.PlayClipAtPoint(audioClip, transform.TransformPoint(_controllerHandler._controller.center), 1);
         }
-        void OnMouseExit()
-            {
-                foreach (var sr in GetComponentsInChildren<SpriteRenderer>())
-                sr.material.DisableKeyword("_EMISSION");
-            }
+        public void SkipTurn()
+        {
+            if (TurnBaseManager.turnBaseData.currentAction <= 0)
+                TurnBaseManager.turnBaseData.NextQueue();
+            TurnBaseManager.turnBaseData.SaveOrigin(TurnBaseManager.turnBaseData.charQueue[TurnBaseManager.turnBaseData.queue].transform.position);
+        }
     }
 }

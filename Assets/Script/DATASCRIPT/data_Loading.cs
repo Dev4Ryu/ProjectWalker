@@ -10,16 +10,11 @@ public class LoadingScene : MonoBehaviour
     [SerializeField] public GameObject UI;
     [SerializeField] private float minimumLoadTime = 2.5f; // seconds to show splash
 
-    private void Awake()
+    void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
         }
     }
 

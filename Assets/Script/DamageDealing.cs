@@ -49,9 +49,6 @@ namespace StarterAssets
                 _targetData.ChangeAnimation("Stunt");
                 _targetData.ApplyImpluse(_knockBack);
                 _targetData._health = _targetData._health - _damage;
-                TurnBaseManager.turnBaseData.queue++;
-                TurnBaseManager.turnBaseData.savedOriginal = true;
-                TurnBaseManager.turnBaseData.charSelect = null;
                 Destroy(gameObject);
             }
             

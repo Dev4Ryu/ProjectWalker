@@ -18,10 +18,11 @@ namespace StarterAssets
         public List<ControllerHandler> charQueue = new List<ControllerHandler>();
         public DialogueBox dialogue;
         public CombatHandler combatTurnBase;
-        public Vector3 originPos;
+        public Transform originPos;
         public bool savedOriginal;
         public bool _turnBaseMode = false;
         public int queue;
+        public int currentAction;
         public ControllerHandler charSelect;
         [Header("ZoomCamera")]
         [Tooltip("camera")]
@@ -56,9 +57,9 @@ namespace StarterAssets
 
         void Update()
         {
-            _turnBaseMode = charQueue.Count > 1 ? true : false;
 
-            if (charQueue.Count == 1)
+            _turnBaseMode = charQueue.Count > 1 ? true : false;
+            if (charQueue.Count == 1 && !dialogue._popUp)
             {
                 player.enabled = true;
                 bgm.enabled = true;
@@ -66,6 +67,7 @@ namespace StarterAssets
                 if (bgm.clip == bgmClip[0]) return;
                 bgm.clip = bgmClip[0];
                 bgm.Play();
+                originPos.gameObject.SetActive(false);
             }
             else if (_turnBaseMode)
             {
@@ -73,8 +75,12 @@ namespace StarterAssets
                 if (bgm.clip == bgmClip[1]) return;
                 bgm.clip = bgmClip[1];
                 bgm.Play();
+                originPos.gameObject.SetActive(player.enabled ? true : false);
             }
-            CameraZooming();
+        }
+        void LateUpdate()
+        {
+             CameraZooming();
         }
 
         void TurnHandler()
@@ -94,21 +100,16 @@ namespace StarterAssets
                 if (charQueue[i].enabled)
                 {
                     combatTurnBase = charQueue[i].GetComponent<CombatHandler>();
-                    float distance = Vector3.Distance(charQueue[i].transform.position, originPos);
-                    float walkCost = (distance / 10) * combatTurnBase._maxAction;//walking cost ap decrease
+                    float distance = Vector3.Distance(charQueue[i].transform.position, originPos.position);
+                    float walkCost = (distance / 10) * currentAction;//walking cost ap decrease
 
-                    combatTurnBase._action = (int)((int)combatTurnBase._maxAction - walkCost) + 1;//calculation of walking
-                    if (walkCost >= combatTurnBase._maxAction)
+                    currentAction = (int)((int)currentAction - walkCost) + 1;//calculation of walking
+                    if (walkCost >= currentAction)
                     {
                         if (player.enabled == true)
                         {
-                            Vector3 direction = (originPos - player.transform.position).normalized;
+                            Vector3 direction = (originPos.position - player.transform.position).normalized;
                             player._controller.Move(direction * combatTurnBase._speedMove * Time.deltaTime);
-                        }
-                        else
-                        {
-                            queue++;
-                            savedOriginal = true;
                         }
                     }
                 }
@@ -117,6 +118,7 @@ namespace StarterAssets
 
         void CameraZooming()
         {
+            print("work");
             float scrollInput = Input.GetAxis("Mouse ScrollWheel");
 
             zoom -= scrollInput * zoomFactor;
@@ -145,9 +147,14 @@ namespace StarterAssets
         public void SaveOrigin(Vector3 origin)
         {
             if (savedOriginal == true)
-                originPos = origin;
+                originPos.position = origin;
             savedOriginal = false;
-            print(originPos);
+        }
+        public void NextQueue()
+        {
+            queue++;
+            savedOriginal = true;
+            currentAction = charQueue[queue]._combat._maxAction;
         }
         
     }

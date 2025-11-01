@@ -75,14 +75,11 @@ namespace StarterAssets{
             sfxManager.enabled = true;
             sfxManager.clip = null;
             EventManager();
-            TurnBaseManager.turnBaseData.bgm.enabled = false;
+            TurnBaseManager.turnBaseData.player.enabled = _popUp ? false : true;
+            TurnBaseManager.turnBaseData.bgm.enabled = _popUp ? false : true;
         }
         void EventManager()
         {
-            if (dialogueLines[lineCount].effect != "")
-            {
-                PlayEffect(dialogueLines[lineCount].effect);
-            }
             if (dialogueLines[lineCount].music != null)
                 ChangeSound(musicManager, dialogueLines[lineCount].music);
             if (dialogueLines[lineCount].sfx != null)
@@ -95,9 +92,9 @@ namespace StarterAssets{
             {
                 PlayEffect("PopUp");
             }
-            if (dialogueLines[lineCount].eventSpawn != null)
+            if (dialogueLines[lineCount].effect != "")
             {
-                Instantiate(dialogueLines[lineCount].eventSpawn);
+                PlayEffect(dialogueLines[lineCount].effect);
             }
         }
         IEnumerator TypeLine(){
@@ -110,6 +107,11 @@ namespace StarterAssets{
         public void NextLines(){
             if (!skip) return;
 
+            if (dialogueLines[lineCount].eventSpawn != null)
+            {
+                Instantiate(dialogueLines[lineCount].eventSpawn);
+            }
+
             StopAllCoroutines();
             if(dialogueLines.Length -1 > lineCount){
                 lineCount++;
@@ -119,7 +121,8 @@ namespace StarterAssets{
             }else{
                 _popUp = false;
                 PlayEffect("PopDown");
-                TurnBaseManager.turnBaseData.bgm.enabled = true;
+                TurnBaseManager.turnBaseData.player.enabled = _popUp ? false : true;
+                TurnBaseManager.turnBaseData.bgm.enabled = _popUp ? false : true;
             }
         }
         void PopUp()

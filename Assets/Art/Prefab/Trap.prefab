@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5455454029457229137}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.25881293, y: 0, z: -0, w: 0.9659275}
-  m_LocalPosition: {x: 0, y: -0.43301296, z: -0.24999954}
+  m_LocalRotation: {x: 0.2588128, y: 0, z: -0, w: 0.96592754}
+  m_LocalPosition: {x: 0, y: -0.00000029802322, z: -0.25000006}
   m_LocalScale: {x: 0.16666666, y: 0.16666666, z: 0.16666666}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -224,8 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _haveOwner: 0
   _breakImpluse: 0
-  _damage: 1
+  _damage: 120
   _knockBack: 0
   _permenant: 1
-  _skipTurn: 0
   _projectileSpeed: 0

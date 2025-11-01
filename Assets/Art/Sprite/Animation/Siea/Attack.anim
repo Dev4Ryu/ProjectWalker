@@ -217,13 +217,20 @@ AnimationClip:
   - time: 0.1
     functionName: ApplyHitbox
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 6601775008869905164, guid: d20a2a721729327458d3cfc625a0d394, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.13333334
     functionName: ChangeAnimation
     data: Idle
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.13333334
+    functionName: SkipTurn
+    data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

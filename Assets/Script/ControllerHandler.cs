@@ -28,10 +28,6 @@ namespace StarterAssets
         public float SpeedChangeRate = 10.0f;
         public float SpeedChangeStop = 20.0f;
 
-        public AudioClip LandingAudioClip;
-        public AudioClip[] FootstepAudioClips;
-        [Range(0, 1)] public float FootstepAudioVolume = 0.5f;
-
         [Header("Cinemachine")]
         [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
         public GameObject CinemachineCameraTarget;
@@ -49,7 +45,7 @@ namespace StarterAssets
         public Animator _animator;
         public CharacterController _controller;
 
-        protected CombatHandler _combat;
+        public CombatHandler _combat;
 
         private const float _threshold = 0.01f;
 
@@ -98,26 +94,6 @@ namespace StarterAssets
                 transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
                 _verticalVelocity = 0;
                 Grounded = true;
-            }
-        }
-
-        private void OnFootstep(AnimationEvent animationEvent)
-        {
-            if (animationEvent.animatorClipInfo.weight > 0.5f)
-            {
-                if (FootstepAudioClips.Length > 0)
-                {
-                    var index = Random.Range(0, FootstepAudioClips.Length);
-                    AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
-                }
-            }
-        }
-
-        private void OnLand(AnimationEvent animationEvent)
-        {
-            if (animationEvent.animatorClipInfo.weight > 0.5f)
-            {
-                AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
         }
         public virtual void OnDisable()

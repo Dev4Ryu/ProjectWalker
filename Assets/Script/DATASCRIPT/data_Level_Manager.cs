@@ -21,7 +21,6 @@ namespace StarterAssets
         public int gapPath;
         public int level;
         public int playerDistance = 60;
-        public LoadingScene loadSceneManager;
 
         public NavMeshSurface navMeshSurface; // <--- add this
         
@@ -37,28 +36,27 @@ namespace StarterAssets
         {
             if (Vector3.Distance(path[0].transform.position,
                 TurnBaseManager.turnBaseData.player.transform.position) >= playerDistance)
-            {
-                GeneratePath();
-                blockPath.transform.position = new Vector3(
-                    blockPath.transform.position.x + gapPath, 0, 0);
-            }
+                {
+                    GeneratePath();
+                    blockPath.transform.position = new Vector3(
+                        blockPath.transform.position.x + gapPath, 0, 0);
+                }
             TurnBaseManager.turnBaseData.level = level;
         }
 
         private void GeneratePath()
         {
+            bool story = false;
             foreach (StoryPath spawnPath in storyPath)
             {
-                if (level == spawnPath.level)
+                if (spawnPath.level == level)
                 {
                     SpawnPath(spawnPath.path);
-                }
-                else
-                {
-                    
-                    SpawnPath(newPath[Random.Range(0, newPath.Count)]);
+                    story = true;
                 }
             }
+            if (story) return;
+                SpawnPath(newPath[Random.Range(0, newPath.Count)]);
         }
         private void SpawnPath(GameObject spawnPath)
         {

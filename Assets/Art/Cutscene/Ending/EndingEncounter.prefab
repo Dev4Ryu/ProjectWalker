@@ -1,0 +1,497 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &124011067303965590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 779082036178913341}
+  - component: {fileID: 3761603743936328127}
+  - component: {fileID: 3131884817662824726}
+  m_Layer: 0
+  m_Name: EndingEncounter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &779082036178913341
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124011067303965590}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4, z: -7}
+  m_LocalScale: {x: 6.06, y: 10.085, z: 39.008915}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3761603743936328127
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124011067303965590}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3131884817662824726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124011067303965590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c962433d0afc61d4393255650f4c3186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialougeRoute:
+  - name: Siea
+    lines: I opened the bunker's door, the cold air inside hitting my face. I descended
+      down.
+    mirror: 0
+    backGround: {fileID: 2800000, guid: 9f2f7abc8ad94164b9363f2dc9126f2b, type: 3}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 8300000, guid: c06377504251e3f4e8431ff8460f9dbf, type: 3}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"Father?.. Mother?.. Are you in here?"'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: A dark, long frozen corridor and at the end, a light shined through.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: Mother..? Father..??? That must be them!
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: A figure is hung ontop of a tree. At first, I thought it was one of those
+      scarecrows since from how the light on the candles are trembling around, making
+      it harder to see.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: I took my steps cautiously. The smell of blood reeked the room to the
+      point I couldn't breathe properly.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: "I gazed up once again, two dangling bodies are hanged above the altar
+      table, swaying by the draft that whispers down from the ceiling. A sea of candle
+      lights\u2014hundreds of them\u2014throws trembling light across skin drained
+      of all color, pale as wax, thin enough to see through."
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: With one whoosh of one of the candle lights, I saw their faces.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: 
+    lines: 
+    mirror: 0
+    backGround: {fileID: 2800000, guid: f8d61d92fc24ea7469f9c51ae78c2455, type: 3}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: Hanging
+  - name: Siea
+    lines: '"Mother...? Father...?"'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"They.. why are..."'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: In an instant, the flames died. White-robed silhouettes emerge from the
+      darkness, arranged in a ceremonial circle. Each bore Lord Arva's symbol
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: I realized I was crying. But not a single drop of tear ran down my face,
+      as if my whole body had dried up, only blood coursing through my body.
+    mirror: 0
+    backGround: {fileID: 2800000, guid: 9f2f7abc8ad94164b9363f2dc9126f2b, type: 3}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"I was too late..."'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: 
+    lines: You have got the death ending, died among the people you hated
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: 
+    lines: 
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 2526918861770592002, guid: 1163135752bd8c94c9ee01f1605b05e9, type: 3}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  dialougeGoodEnd:
+  - name: Sael
+    lines: '"Your father and mother are waiting in there for you, Siea."'
+    mirror: 1
+    backGround: {fileID: 2800000, guid: aa915248f96c5c1498dced733f496574, type: 3}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 8300000, guid: c06377504251e3f4e8431ff8460f9dbf, type: 3}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"You! from earlier! How are you here?! You Outsider!"'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Sael
+    lines: '"I know you want to kill me. I can tell from your eyes."'
+    mirror: 1
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"Shut it! I didn''t want to stain my land''s snow with your filthy blood."'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Sael
+    lines: '"Your.. land? That''s very territorial of you, but whatever."'
+    mirror: 1
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: 
+    lines: He reached out his hand as if to lead me down. I hesitated, but finally,
+      slowly extended my hand out and grabbed onto his.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"I.. feel like I''m back home.. it''s oddly weird."'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Sael
+    lines: '"That''s because you are returning home, Siea"'
+    mirror: 1
+    backGround: {fileID: 2800000, guid: 9f2f7abc8ad94164b9363f2dc9126f2b, type: 3}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: I saw a light shined from within. Mother..? Father..??? That must be them!
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: A figure is hung ontop of a tree. At first, I thought it was one of those
+      scarecrows since from how the light on the candles are trembling around, making
+      it harder to see.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: I took my steps cautiously. The smell of blood reeked the room to the
+      point I couldn't breathe properly.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: "I gazed up once again, two dangling bodies are hanged above the altar
+      table, swaying by the draft that whispers down from the ceiling. A sea of candle
+      lights\u2014hundreds of them\u2014throws trembling light across skin drained
+      of all color, pale as wax, thin enough to see through."
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: With the whoosh of candlelight, I saw their faces.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: 
+    lines: 
+    mirror: 0
+    backGround: {fileID: 2800000, guid: f8d61d92fc24ea7469f9c51ae78c2455, type: 3}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: Hanging
+  - name: Siea
+    lines: '"Mother.. Father..?"'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 8300000, guid: c06377504251e3f4e8431ff8460f9dbf, type: 3}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: In an instant, the flames died. White-robed silhouettes emerge from the
+      darkness, arranged in a ceremonial circle. Each bore Lord Arva's symbol
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: I realized I was crying. But not a single drop of tear ran down my face,
+      as if my whole body had dried up, only blood coursing through my body.
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"I was too late..."'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Sael
+    lines: '"They''ve recieved the blessing of our Lord Arva, Siea."'
+    mirror: 1
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"What in the world are you saying?!!"'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Sael
+    lines: '"He assigned me... to curse your tribe reverting back to their ''purest
+      forms''. Corrupted faith, misguided hope, blood alone can cleanse them."'
+    mirror: 1
+    backGround: {fileID: 2800000, guid: d4bf15fdff1a9cb4fb3f05bcb55b210e, type: 3}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 8300000, guid: a84f8a5c1e05e3e4ebd67549bb072a80, type: 3}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"You are going to turn them into one of those monsters..?"'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Sael
+    lines: '"They are not monsters, but beings that had ascended beyond their purest
+      form."'
+    mirror: 1
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Sael
+    lines: '"Among them all, you, Siea, are the purest."'
+    mirror: 1
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: 
+    lines: Sael pulled back my sleeve, exposing the mark the disgrace mark on my
+      right arm.
+    mirror: 0
+    backGround: {fileID: 2800000, guid: 82dc6a5f309b02646a7d62f956323f99, type: 3}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 8300000, guid: 5479ef65ee508474194bc40ce403bf52, type: 3}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: "\"I have seen this mark.. ever since I was a child, through Lord Arva's
+      divine vision. I saw you from the very start. A girl bearing the mark of light
+      upon her flesh. You are the Bride of Light\u2014the one who will merge the
+      devotion of two deities into one.\""
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"You.. knew from the start? You followed me all the way here because-"'
+    mirror: 0
+    backGround: {fileID: 2800000, guid: 4af185ff121cf5c47b7063c1cfbbdbdf, type: 3}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Sael
+    lines: '"Because I love you. And also because I am bound to His command."'
+    mirror: 1
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Sael
+    lines: '"I pray, let me bring you to Lord Arva, even if it costs the lives of
+      an entire village."'
+    mirror: 1
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"Everything... was done under the lord''s command??"'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Siea
+    lines: '"We didn''t even get a choice from the start...? Then, why?"'
+    mirror: 0
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: Sael
+    lines: '"You have always had the choices, Siea.. But whatever choice you make,
+      the road leads back to me."'
+    mirror: 1
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: 
+    lines: You have got the cruel ending
+    mirror: 1
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 0}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  - name: 
+    lines: You have got the cruel ending
+    mirror: 1
+    backGround: {fileID: 0}
+    eventSpawn: {fileID: 2526918861770592002, guid: 1163135752bd8c94c9ee01f1605b05e9, type: 3}
+    music: {fileID: 0}
+    sfx: {fileID: 0}
+    effect: 
+  deleteEnd: 0
